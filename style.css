@@ -27,6 +27,10 @@ body {
   line-height: 1.65;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -56,10 +60,9 @@ a:hover {
   margin: 0 auto;
   min-height: var(--header-height);
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   align-items: center;
-  column-gap: 20px;
+  gap: 10px;
 }
 
 .brand {
@@ -95,7 +98,7 @@ a:hover {
 
 .nav-toggle {
   display: none;
-  margin-left: auto;
+  margin-left: 0;
   width: 36px;
   height: 36px;
   border: 1px solid #dbe2ec;
@@ -108,10 +111,76 @@ a:hover {
   cursor: pointer;
 }
 
+.lang-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-left: 10px;
+  width: 98px;
+  height: 34px;
+  padding: 2px;
+  border: 1px solid #c4b5fd;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f5f3ff 0%, #eef2ff 100%);
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+  transition: color 0.16s ease, background 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.lang-toggle::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #c4b5fd;
+  box-shadow: 0 4px 10px -8px rgba(76, 29, 149, 0.7);
+  transition: transform 0.18s ease;
+}
+
+.lang-toggle[data-lang="zh"]::before {
+  transform: translateX(100%);
+}
+
+.lang-toggle-option {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  pointer-events: none;
+}
+
+.lang-toggle[data-lang="en"] .lang-toggle-en,
+.lang-toggle[data-lang="zh"] .lang-toggle-zh {
+  color: #4c1d95;
+}
+
+.lang-toggle:hover {
+  background: linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%);
+  border-color: #a78bfa;
+  transform: translateY(-1px);
+}
+
+.lang-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196, 181, 253, 0.55);
+}
+
 .site-nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-left: auto;
   gap: 8px;
 }
 
@@ -163,8 +232,8 @@ a:hover {
 }
 
 .avatar {
-  width: 248px;
-  height: 248px;
+  width: 256px;
+  height: 256px;
   margin: 0 auto 16px;
   border-radius: 50%;
   object-fit: cover;
@@ -179,7 +248,7 @@ a:hover {
   line-height: 1.2;
 }
 
-.en-name {
+.college {
   margin: 6px 0 0;
   text-align: center;
   font-size: 0.94rem;
@@ -292,6 +361,121 @@ p {
   margin-bottom: 8px;
 }
 
+.awards-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 136px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.award-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.award-thumb {
+  width: 136px;
+  height: 84px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  object-fit: cover;
+  background: #f8fafc;
+}
+
+.award-thumb-trigger {
+  width: 136px;
+  height: 84px;
+  display: block;
+  border: none;
+  padding: 0;
+  background: none;
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+.award-thumb-trigger:hover .award-thumb {
+  border-color: #e9d5ff;
+  box-shadow: 0 8px 20px -16px rgba(139, 92, 246, 0.9);
+}
+
+.award-thumb-trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 213, 255, 0.7);
+}
+
+.award-thumb-placeholder {
+  display: block;
+}
+
+.award-body {
+  min-width: 0;
+}
+
+.award-title {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.award-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.76);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.image-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-image {
+  max-width: min(92vw, 1280px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: #ffffff;
+  box-shadow: 0 36px 56px -28px rgba(15, 23, 42, 0.85);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #dbe2ec;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .item {
   padding: 12px 0;
   border-top: 1px solid #f1f5f9;
@@ -300,6 +484,44 @@ p {
 .item:first-child {
   border-top: none;
   padding-top: 0;
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.edu-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.edu-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 5px;
+}
+
+.edu-logo-placeholder {
+  background: #f1f5f9;
+}
+
+.edu-content {
+  min-width: 0;
 }
 
 .item-meta {
@@ -348,23 +570,32 @@ p {
   }
 
   .site-header-inner {
-    grid-template-columns: 1fr auto;
+    flex-wrap: wrap;
     padding: 10px 14px;
     row-gap: 8px;
   }
 
   .nav-toggle {
     display: block;
+    margin-left: auto;
   }
 
   .site-nav {
     display: none;
-    grid-column: 1 / -1;
+    width: 100%;
+    margin-left: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     padding: 10px 0 2px;
     border-top: 1px solid var(--line);
+  }
+
+  .lang-toggle {
+    margin-left: 8px;
+    width: 90px;
+    height: 32px;
+    font-size: 0.76rem;
   }
 
   .site-nav a {
@@ -397,6 +628,49 @@ p {
   .icon-link {
     width: 30px;
     height: 30px;
+  }
+
+  .award-item {
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+  }
+
+  .edu-item {
+    grid-template-columns: 48px 1fr;
+    gap: 10px;
+  }
+
+  .edu-logo {
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+  }
+
+  .award-thumb {
+    width: 100px;
+    height: 66px;
+  }
+
+  .award-thumb-trigger {
+    width: 100px;
+    height: 66px;
+  }
+
+  .award-title {
+    font-size: 0.93rem;
+  }
+
+  .award-desc {
+    font-size: 0.83rem;
+  }
+
+  .image-lightbox {
+    padding: 14px;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
   }
 
   h2 {

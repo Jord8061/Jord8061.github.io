@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +9,8 @@
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="#">
-        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="头像" />
-        <span id="nav-name">你的名字</span>
+        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="Avatar" />
+        <span id="nav-name">Your Name</span>
       </a>
 
       <button
@@ -26,22 +25,33 @@
       </button>
 
       <nav class="site-nav" id="site-nav">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#awards">Awards</a>
+        <a id="nav-about" href="#about">About</a>
+        <a id="nav-news" href="#news">News</a>
+        <a id="nav-projects" href="#projects">Projects</a>
+        <a id="nav-education" href="#education">Education</a>
+        <a id="nav-experience" href="#experience">Experience</a>
+        <a id="nav-awards" href="#awards">Awards</a>
       </nav>
+
+      <button
+        class="lang-toggle"
+        id="lang-toggle"
+        type="button"
+        aria-label="Switch language"
+        data-lang="en"
+      >
+        <span class="lang-toggle-option lang-toggle-en">EN</span>
+        <span class="lang-toggle-option lang-toggle-zh">中文</span>
+      </button>
     </div>
   </header>
 
   <div class="page">
     <aside class="sidebar">
-      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="头像" />
+      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="Avatar" />
 
-      <h1 class="name" id="name-cn">你的名字</h1>
-      <p class="en-name" id="name-en">Your English Name</p>
+      <h1 class="name" id="name-cn">Your Name</h1>
+      <p class="college" id="college">Your School</p>
       <p class="tagline" id="tagline"></p>
 
       <div class="social-icons" id="social-links"></div>
@@ -49,36 +59,46 @@
 
     <main class="main">
       <section class="section" id="about">
-        <h2>About Me</h2>
+        <h2 id="heading-about">About Me</h2>
         <div id="about-content"></div>
       </section>
 
       <section class="section" id="news">
-        <h2>News</h2>
+        <h2 id="heading-news">News</h2>
         <ul class="news-list" id="news-list"></ul>
       </section>
 
       <section class="section" id="projects">
-        <h2>Selected Projects</h2>
+        <h2 id="heading-projects">Selected Projects</h2>
         <div id="projects-list"></div>
       </section>
 
       <section class="section" id="education">
-        <h2>Education</h2>
+        <h2 id="heading-education">Education</h2>
         <div id="education-list"></div>
       </section>
 
       <section class="section" id="experience">
-        <h2>Experience</h2>
+        <h2 id="heading-experience">Experience</h2>
         <div id="experience-list"></div>
       </section>
 
       <section class="section" id="awards">
-        <h2>Honors & Awards</h2>
-        <ul class="simple-list" id="awards-list"></ul>
+        <h2 id="heading-awards">Honors & Awards</h2>
+        <ul class="awards-list" id="awards-list"></ul>
       </section>
-
     </main>
+  </div>
+
+  <div class="image-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Award image preview">
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image preview">✕</button>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+  </div>
+
+  <script src="./content-en.js"></script>
+  <script src="./content-zh.js"></script>
+ton>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
   </div>
 
   <script src="./content.js"></script>

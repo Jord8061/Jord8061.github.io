@@ -1,101 +1,10 @@
-﻿const siteData = {
-  profile: {
-    avatar: "./assets/avatar.jpg",
-    navAvatar: "./assets/nav.jpg",
-    navName: "Good day, Lord Phaethon",
-    nameCn: "Jin Chen | 陈瑾",
-    nameEn: "Artificial Intelligence / SWUFE",
-    tagline:
-      "AI undergraduate at SWUFE, interested in LLMs, agents, algorithms, and practical AI systems.",
-    links: [
-      { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
-      { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
-      { name: "OpenReview", url: "https://openreview.net/profile?id=%7EJin_Chen12", icon: "openreview" },
-      { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
-    ]
-  },
-
-  about: [
-    "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My interests lie in large language models, intelligent agents, GraphRAG security, and practical AI systems.",
-    "My background spans competitive programming, full-stack development, and AI application engineering. I enjoy connecting research ideas with solid implementation, especially in scenarios where system design, reasoning ability, and engineering reliability all matter.",
-    "Currently, I am working on front-end development in an AI-oriented business team, while also conducting research on adversarial attacks against GraphRAG systems. I am particularly interested in building useful AI systems that are both practical in deployment and rigorous in methodology."
-  ],
-
-  news: [
-    { date: "2026.01", text: "Started my front-end internship at Taikang Online, in a team actively moving toward AI integration." },
-    { date: "2026.01", text: "Completed major experimental work and method refinement for LogicPoison, our ACL 2026 submission on attacks against GraphRAG systems." },
-    { date: "2025.10", text: "Delivered a speech as the student representative at the opening ceremony of the 2025 CCPC Girls Contest." }
-  ],
-
-  projects: [
-    {
-      title: "LogicPoison: Logical Attacks on Graph Retrieval-Augmented Generation",
-      meta: "Co-first Author | ACL 2026 submission",
-      description:
-        "A research project on adversarial attacks against GraphRAG systems. As a co-first author, I was responsible for the full experimental pipeline and made major contributions to method refinement and experimental design. The work studies how logical corruption can compromise GraphRAG reasoning while remaining stealthy at the text level. Code will be released after the review decision.",
-      tags: ["GraphRAG", "Security", "LLM", "ACL Submission"],
-      links: [
-        { name: "Paper", url: "#" }
-      ]
-    },
-    {
-      title: "AI-Agent System for Automated Data Processing and LLM Fine-tuning",
-      meta: "Full-stack Developer | 2024.12 – 2025.06",
-      description:
-        "Built an end-to-end system for automated document processing, data cleaning, RAG workflow integration, and model-related task execution. I was mainly responsible for the front-end architecture and core module development, while also participating in backend pipeline integration, real-time task monitoring, and Docker-based deployment. The project reached the national finals of the Citi Cup and won a National Third Prize (Top 20).",
-      tags: ["Vue3", "Node.js", "FastAPI", "RAG", "AI Agent"],
-      links: [
-        { name: "Code", url: "#" }
-      ]
-    }
-  ],
-
-  education: [
-    {
-      title: "Southwestern University of Finance and Economics",
-      meta: "B.Eng. in Artificial Intelligence | 2022 – 2026",
-      description:
-        "Relevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building."
-    }
-  ],
-
-  experience: [
-    {
-      title: "Taikang Online",
-      meta: "Front-end Development Intern | 2026 – Present",
-      description:
-        "Working on front-end development in a team that is actively moving toward AI integration. Given my combined background in AI and engineering, I am interested in contributing not only to current front-end work, but also to future AI-related system building and collaboration."
-    },
-    {
-      title: "China Center for Behavioral Economics and Finance, SWUFE",
-      meta: "RAG Project Crawling Engineer | 2025.02 – 2025.06",
-      description:
-        "Built the data acquisition pipeline for a RAG-oriented academic literature knowledge base. I designed multi-source crawlers, handled structured parsing and cleaning, and applied LLM-based judging to identify 4,000+ papers aligned with target topics in behavioral finance."
-    },
-    {
-      title: "Singularity Lab, School of Computing and Artificial Intelligence, SWUFE",
-      meta: "Student Head | 2025.06.04 – Present",
-      description:
-        "Leading the overall operation of the student technical community, including training system design, contest organization, internal selection, and the coordination of the campus-level 'Singularity Cup'."
-    },
-    {
-      title: "Singularity Lab, School of Computing and Artificial Intelligence, SWUFE",
-      meta: "Head of Programming Division | 2023.12.12 – 2025.06.03",
-      description:
-        "Focused on algorithm training, weekly practice organization, internal contest problem setting, and member development. I was also involved in managing online training platforms and helping build the studio’s ACM/ICPC training workflow."
-    }
-  ],
-
-  awards: [
-    "ICPC Asia Regional Contest (Xi'an) Bronze Medal, 2025",
-    "CCPC Girls Contest Silver Medal, 2025",
-    "China-ASEAN International Collegiate Programming Contest Gold Medal, 2024",
-    "Citi Cup Financial Innovation Application Competition, National Third Prize, 2025",
-    "National College Mathematical Contest in Modeling, Sichuan First Prize, 2024",
-    "Lanqiao Cup (Python A Group), Sichuan First Prize, 2024"
-  ],
-
+﻿const DATASETS = {
+  en: window.siteDataEn,
+  zh: window.siteDataZh
 };
+
+let currentLang = DATASETS.en ? "en" : "zh";
+let currentData = DATASETS[currentLang];
 
 function escapeHtml(text) {
   return String(text)
@@ -104,6 +13,47 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function setText(id, value) {
+  const node = document.getElementById(id);
+  if (!node) return;
+  node.textContent = value || "";
+}
+
+function applyUIText(ui) {
+  const locale = ui?.locale || (currentLang === "zh" ? "zh-CN" : "en");
+  document.documentElement.lang = locale;
+
+  setText("nav-about", ui?.nav?.about || "About");
+  setText("nav-news", ui?.nav?.news || "News");
+  setText("nav-projects", ui?.nav?.projects || "Projects");
+  setText("nav-education", ui?.nav?.education || "Education");
+  setText("nav-experience", ui?.nav?.experience || "Experience");
+  setText("nav-awards", ui?.nav?.awards || "Awards");
+
+  setText("heading-about", ui?.sectionHeadings?.about || "About Me");
+  setText("heading-news", ui?.sectionHeadings?.news || "News");
+  setText("heading-projects", ui?.sectionHeadings?.projects || "Selected Projects");
+  setText("heading-education", ui?.sectionHeadings?.education || "Education");
+  setText("heading-experience", ui?.sectionHeadings?.experience || "Experience");
+  setText("heading-awards", ui?.sectionHeadings?.awards || "Honors & Awards");
+
+  const langToggle = document.getElementById("lang-toggle");
+  if (langToggle) {
+    langToggle.setAttribute("data-lang", currentLang);
+    langToggle.setAttribute("aria-label", ui?.toggleAriaLabel || "Switch language");
+    langToggle.setAttribute("title", ui?.toggleAriaLabel || "Switch language");
+  }
+
+  const lightbox = document.getElementById("image-lightbox");
+  const closeButton = document.getElementById("lightbox-close");
+  if (lightbox && ui?.lightboxAriaLabel) {
+    lightbox.setAttribute("aria-label", ui.lightboxAriaLabel);
+  }
+  if (closeButton && ui?.lightboxCloseAriaLabel) {
+    closeButton.setAttribute("aria-label", ui.lightboxCloseAriaLabel);
+  }
 }
 
 function getIconSvg(iconType) {
@@ -179,34 +129,36 @@ function renderLinks(items) {
 
 function renderAbout(items) {
   const container = document.getElementById("about-content");
+  if (!container) return;
   container.innerHTML = items.map((text) => `<p>${escapeHtml(text)}</p>`).join("");
 }
 
 function renderNews(items) {
   const container = document.getElementById("news-list");
+  if (!container) return;
   container.innerHTML = items
-    .map(
-      (item) => `<li><strong>${escapeHtml(item.date)}</strong> ${escapeHtml(item.text)}</li>`
-    )
+    .map((item) => {
+      const linkHtml = item.url
+        ? ` <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkText || "Read more")}</a>`
+        : "";
+      return `<li><strong>${escapeHtml(item.date)}</strong> ${escapeHtml(item.text)}${linkHtml}</li>`;
+    })
     .join("");
 }
 
 function renderCardItems(items, targetId) {
   const container = document.getElementById(targetId);
+  if (!container) return;
+
   container.innerHTML = items
     .map((item) => {
       const tagsHtml = item.tags
-        ? `<div class="badges">${item.tags
-            .map((tag) => `<span class="badge">${escapeHtml(tag)}</span>`)
-            .join("")}</div>`
+        ? `<div class="badges">${item.tags.map((tag) => `<span class="badge">${escapeHtml(tag)}</span>`).join("")}</div>`
         : "";
 
       const linksHtml = item.links
         ? `<p>${item.links
-            .map(
-              (link) =>
-                `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.name)}</a>`
-            )
+            .map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.name)}</a>`)
             .join(" / ")}</p>`
         : "";
 
@@ -223,42 +175,132 @@ function renderCardItems(items, targetId) {
     .join("");
 }
 
+function renderEducation(items) {
+  const container = document.getElementById("education-list");
+  if (!container) return;
+
+  container.innerHTML = items
+    .map((item) => {
+      const title = escapeHtml(item.title || "");
+      const meta = escapeHtml(item.meta || "");
+      const description = escapeHtml(item.description || "");
+      const imageSrc = item.image ? encodeURI(item.image) : "";
+      const imageAlt = escapeHtml(item.logoAlt || `${item.title || "Education"} logo`);
+      const logoHtml = imageSrc
+        ? `<img class="edu-logo" src="${imageSrc}" alt="${imageAlt}" loading="lazy" />`
+        : `<div class="edu-logo edu-logo-placeholder" aria-hidden="true"></div>`;
+
+      return `
+        <div class="edu-item">
+          <div class="edu-logo-wrap">${logoHtml}</div>
+          <div class="edu-content">
+            <h3>${title}</h3>
+            <div class="item-meta">${meta}</div>
+            <p class="muted">${description}</p>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function renderAwards(items) {
   const container = document.getElementById("awards-list");
-  container.innerHTML = items.map((text) => `<li>${escapeHtml(text)}</li>`).join("");
+  if (!container) return;
+
+  const parseAwardDate = (value) => {
+    if (!value) return Number.NEGATIVE_INFINITY;
+    const match = String(value).match(/(\d{4})(?:[./-](\d{1,2}))?/);
+    if (!match) return Number.NEGATIVE_INFINITY;
+    const year = Number.parseInt(match[1], 10);
+    const month = match[2] ? Number.parseInt(match[2], 10) : 1;
+    return year * 100 + month;
+  };
+
+  const getAwardSortKey = (item) => {
+    if (typeof item === "string") return parseAwardDate(item);
+    return parseAwardDate(item.date || item.description);
+  };
+
+  const sortedItems = [...items].sort((a, b) => getAwardSortKey(b) - getAwardSortKey(a));
+  const lightboxPrefix = currentData?.ui?.lightboxOpenPrefix || "View full image: ";
+
+  container.innerHTML = sortedItems
+    .map((item) => {
+      if (typeof item === "string") return `<li>${escapeHtml(item)}</li>`;
+
+      const title = escapeHtml(item.title || "Award");
+      const description = escapeHtml(item.description || "");
+      const imageSrc = item.image ? encodeURI(item.image) : "";
+      const imageAlt = escapeHtml(item.alt || item.title || "Award image");
+      const thumbHtml = imageSrc
+        ? `<button class="award-thumb-trigger" type="button" data-fullsrc="${imageSrc}" data-alt="${imageAlt}" aria-label="${escapeHtml(lightboxPrefix)}${title}">
+            <img class="award-thumb" src="${imageSrc}" alt="${imageAlt}" loading="lazy" />
+          </button>`
+        : `<div class="award-thumb award-thumb-placeholder" aria-hidden="true"></div>`;
+
+      return `
+        <li class="award-item">
+          ${thumbHtml}
+          <div class="award-body">
+            <h3 class="award-title">${title}</h3>
+            ${description ? `<p class="award-desc">${description}</p>` : ""}
+          </div>
+        </li>
+      `;
+    })
+    .join("");
+
+  if (!container.dataset.lightboxBound) {
+    container.addEventListener("click", (event) => {
+      const trigger = event.target.closest(".award-thumb-trigger");
+      if (!trigger) return;
+      const fullSrc = trigger.getAttribute("data-fullsrc");
+      const fullAlt = trigger.getAttribute("data-alt") || "Award image";
+      if (!fullSrc) return;
+      openImageLightbox(fullSrc, fullAlt);
+    });
+    container.dataset.lightboxBound = "true";
+  }
 }
 
 function renderPage(data) {
   const navAvatar = data.profile.navAvatar || data.profile.avatar;
   const navName = data.profile.navName || data.profile.nameCn;
 
-  document.getElementById("avatar").src = data.profile.avatar;
-  document.getElementById("nav-avatar").src = navAvatar;
-  document.getElementById("nav-name").textContent = navName;
+  const avatar = document.getElementById("avatar");
+  const navAvatarNode = document.getElementById("nav-avatar");
+  if (avatar) avatar.src = data.profile.avatar;
+  if (navAvatarNode) navAvatarNode.src = navAvatar;
+  setText("nav-name", navName);
 
-  document.getElementById("name-cn").textContent = data.profile.nameCn;
-  document.getElementById("name-en").textContent = data.profile.nameEn;
-  document.getElementById("tagline").textContent = data.profile.tagline;
-  document.title = `${data.profile.nameCn} | Academic Homepage`;
+  setText("name-cn", data.profile.nameCn);
+  setText("college", data.profile.college || "");
+  setText("tagline", data.profile.tagline);
 
-  renderLinks(data.profile.links);
-  renderAbout(data.about);
-  renderNews(data.news);
-  renderCardItems(data.projects, "projects-list");
-  renderCardItems(data.education, "education-list");
-  renderCardItems(data.experience, "experience-list");
-  renderAwards(data.awards);
+  const pageTitle = data.ui?.pageTitle || "Academic Homepage";
+  document.title = `${data.profile.nameCn} | ${pageTitle}`;
+
+  renderLinks(data.profile.links || []);
+  renderAbout(data.about || []);
+  renderNews(data.news || []);
+  renderCardItems(data.projects || [], "projects-list");
+  renderEducation(data.education || []);
+  renderCardItems(data.experience || [], "experience-list");
+  renderAwards(data.awards || []);
 
   const footer = document.getElementById("footer-text");
   if (footer && data.footer) footer.textContent = data.footer;
 }
 
-renderPage(siteData);
-
 const header = document.querySelector(".site-header");
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");
 const brandLink = document.querySelector(".brand");
+const langToggle = document.getElementById("lang-toggle");
+const imageLightbox = document.getElementById("image-lightbox");
+const lightboxClose = document.getElementById("lightbox-close");
+const lightboxImage = document.getElementById("lightbox-image");
 const CLOSED_ICON = "\u2630";
 const OPEN_ICON = "\u2715";
 const navLinks = siteNav ? Array.from(siteNav.querySelectorAll('a[href^="#"]')) : [];
@@ -276,6 +318,24 @@ function closeMobileNav() {
   navToggle.textContent = CLOSED_ICON;
 }
 
+function openImageLightbox(src, alt) {
+  if (!imageLightbox || !lightboxImage) return;
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || "Award image";
+  imageLightbox.classList.add("open");
+  imageLightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeImageLightbox() {
+  if (!imageLightbox || !lightboxImage) return;
+  imageLightbox.classList.remove("open");
+  imageLightbox.setAttribute("aria-hidden", "true");
+  lightboxImage.removeAttribute("src");
+  lightboxImage.alt = "";
+  document.body.classList.remove("modal-open");
+}
+
 function setActiveNavById(id) {
   navLinks.forEach((link) => {
     const targetId = (link.getAttribute("href") || "").replace("#", "");
@@ -291,9 +351,7 @@ function syncHeaderState() {
 function syncActiveNavOnScroll() {
   if (!navTargets.length) return;
   const anchorOffset =
-    Number.parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--anchor-offset")
-    ) || 6;
+    Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--anchor-offset")) || 6;
   const offset = header ? header.offsetHeight + anchorOffset : 72;
   const marker = window.scrollY + offset;
   let activeId = navTargets[0].section.id;
@@ -308,6 +366,19 @@ function syncActiveNavOnScroll() {
 function syncNavVisualState() {
   syncHeaderState();
   syncActiveNavOnScroll();
+}
+
+function setLanguage(lang) {
+  const nextLang = DATASETS[lang] ? lang : "en";
+  if (!DATASETS[nextLang]) return;
+
+  currentLang = nextLang;
+  currentData = DATASETS[nextLang];
+
+  closeImageLightbox();
+  applyUIText(currentData.ui || {});
+  renderPage(currentData);
+  syncNavVisualState();
 }
 
 if (header && navToggle && siteNav) {
@@ -338,7 +409,30 @@ if (brandLink) {
   });
 }
 
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "zh" : "en");
+  });
+}
+
+if (lightboxClose) {
+  lightboxClose.addEventListener("click", closeImageLightbox);
+}
+
+if (imageLightbox) {
+  imageLightbox.addEventListener("click", (event) => {
+    if (event.target === imageLightbox) closeImageLightbox();
+  });
+}
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeImageLightbox();
+});
+
 window.addEventListener("scroll", syncNavVisualState, { passive: true });
 window.addEventListener("resize", syncActiveNavOnScroll);
 window.addEventListener("load", syncNavVisualState);
-syncNavVisualState();
+
+if (currentData) {
+  setLanguage(currentLang);
+}
