@@ -136,43 +136,50 @@
       title: "ICPC Asia Xi'an Regional Contest",
       date: "2025.10",
       description: "Bronze Medal | 2025.10",
-      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png"
+      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+      thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg"
     },
     {
       title: "China Collegiate Programming Contest for Girls",
       date: "2025.10",
       description: "Silver Medal | 2025.10",
-      image: "./assets/China Collegiate Programming Contest for Girls.jpg"
+      image: "./assets/China Collegiate Programming Contest for Girls.jpg",
+      thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg"
     },
     {
       title: "Citi Cup Financial Innovation Application Competition",
       date: "2025.06",
       description: "National Third Prize | 2025.06",
-      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png"
+      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png",
+      thumb: "./assets/thumbs/Citi Cup Financial Innovation Application Competition_01-thumb.jpg"
     },
     {
       title: "National College Mathematical Contest in Modeling",
       date: "2024.09",
       description: "Sichuan First Prize | 2024.09",
-      image: "./assets/Mathematical Contest in Modeling.png"
+      image: "./assets/Mathematical Contest in Modeling.png",
+      thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
       title: "CCPC Guangxi Collegiate Programming Contest",
       date: "2024.05",
       description: "Gold Medal | 2024.05",
-      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg"
+      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+      thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg"
     },
     {
       title: "Chinese Collegiate Computing Contest (GPLT)",
       date: "2024.04",
       description: "National Individual Third Prize | 2024.04",
-      image: "./assets/Chinese Collegiate Computing Contest GPLT.png"
+      image: "./assets/Chinese Collegiate Computing Contest GPLT.png",
+      thumb: "./assets/thumbs/Chinese Collegiate Computing Contest GPLT-thumb.jpg"
     },
     {
       title: "Lanqiao Cup (Python A Group)",
       date: "2024.04",
       description: "Sichuan First Prize | 2024.04",
-      image: "./assets/Lanqiao Cup (Python A Group).jpg"
+      image: "./assets/Lanqiao Cup (Python A Group).jpg",
+      thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
   ]
 };

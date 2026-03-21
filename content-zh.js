@@ -136,43 +136,50 @@
       title: "国际大学生程序设计大赛亚洲区域赛（西安）",
       date: "2025.10",
       description: "铜奖 | 2025.10",
-      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png"
+      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+      thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg"
     },
     {
       title: "中国大学生程序设计竞赛女生专场",
       date: "2025.10",
       description: "银奖 | 2025.10",
-      image: "./assets/China Collegiate Programming Contest for Girls.jpg"
+      image: "./assets/China Collegiate Programming Contest for Girls.jpg",
+      thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg"
     },
     {
       title: "第二十届“花旗杯”金融创新应用大赛",
       date: "2025.06",
       description: "全国三等奖 | 2025.06",
-      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png"
+      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png",
+      thumb: "./assets/thumbs/Citi Cup Financial Innovation Application Competition_01-thumb.jpg"
     },
     {
       title: "全国大学生数学建模竞赛",
       date: "2024.09",
       description: "四川省一等奖 | 2024.09",
-      image: "./assets/Mathematical Contest in Modeling.png"
+      image: "./assets/Mathematical Contest in Modeling.png",
+      thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
       title: "中国大学生程序设计竞赛广西省赛",
       date: "2024.05",
       description: "金奖 | 2024.05",
-      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg"
+      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+      thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg"
     },
     {
       title: "CCCC-GPLT团体程序设计天梯赛",
       date: "2024.04",
       description: "全国个人三等奖 | 2024.04",
-      image: "./assets/Chinese Collegiate Computing Contest GPLT.png"
+      image: "./assets/Chinese Collegiate Computing Contest GPLT.png",
+      thumb: "./assets/thumbs/Chinese Collegiate Computing Contest GPLT-thumb.jpg"
     },
     {
       title: "蓝桥杯Python程序设计大学A组",
       date: "2024.04",
       description: "四川省一等奖 | 2024.04",
-      image: "./assets/Lanqiao Cup (Python A Group).jpg"
+      image: "./assets/Lanqiao Cup (Python A Group).jpg",
+      thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
   ]
 };

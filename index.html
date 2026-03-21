@@ -3,13 +3,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Academic Homepage</title>
+  <link rel="preload" as="image" href="./assets/avatar.jpg" />
+  <link rel="preload" as="image" href="./assets/nav.jpg" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="#">
-        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="Avatar" />
+        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="Avatar" width="32" height="32" loading="eager" decoding="async" />
         <span id="nav-name">Your Name</span>
       </a>
 
@@ -48,7 +50,7 @@
 
   <div class="page">
     <aside class="sidebar">
-      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="Avatar" />
+      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="Avatar" width="256" height="256" loading="eager" fetchpriority="high" decoding="async" />
 
       <h1 class="name" id="name-cn">Your Name</h1>
       <p class="college" id="college">Your School</p>
@@ -92,14 +94,11 @@
 
   <div class="image-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Award image preview">
     <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image preview">✕</button>
-    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+    <img class="lightbox-image" id="lightbox-image" src="" alt="" decoding="async" />
   </div>
 
   <script src="./content-en.js"></script>
   <script src="./content-zh.js"></script>
-ton>
-    <img class="lightbox-image" id="lightbox-image" src="" alt="" />
-  </div>
 
   <script src="./content.js"></script>
 </body>

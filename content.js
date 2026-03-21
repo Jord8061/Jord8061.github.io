@@ -187,7 +187,7 @@ function renderEducation(items) {
       const imageSrc = item.image ? encodeURI(item.image) : "";
       const imageAlt = escapeHtml(item.logoAlt || `${item.title || "Education"} logo`);
       const logoHtml = imageSrc
-        ? `<img class="edu-logo" src="${imageSrc}" alt="${imageAlt}" loading="lazy" />`
+        ? `<img class="edu-logo" src="${imageSrc}" alt="${imageAlt}" loading="lazy" decoding="async" fetchpriority="low" />`
         : `<div class="edu-logo edu-logo-placeholder" aria-hidden="true"></div>`;
 
       return `
@@ -232,10 +232,12 @@ function renderAwards(items) {
       const title = escapeHtml(item.title || "Award");
       const description = escapeHtml(item.description || "");
       const imageSrc = item.image ? encodeURI(item.image) : "";
+      const thumbSrc = item.thumb ? encodeURI(item.thumb) : imageSrc;
+      const fullSrc = imageSrc || thumbSrc;
       const imageAlt = escapeHtml(item.alt || item.title || "Award image");
-      const thumbHtml = imageSrc
-        ? `<button class="award-thumb-trigger" type="button" data-fullsrc="${imageSrc}" data-alt="${imageAlt}" aria-label="${escapeHtml(lightboxPrefix)}${title}">
-            <img class="award-thumb" src="${imageSrc}" alt="${imageAlt}" loading="lazy" />
+      const thumbHtml = thumbSrc
+        ? `<button class="award-thumb-trigger" type="button" data-fullsrc="${fullSrc}" data-alt="${imageAlt}" aria-label="${escapeHtml(lightboxPrefix)}${title}">
+            <img class="award-thumb" src="${thumbSrc}" alt="${imageAlt}" loading="lazy" decoding="async" fetchpriority="low" />
           </button>`
         : `<div class="award-thumb award-thumb-placeholder" aria-hidden="true"></div>`;
 
