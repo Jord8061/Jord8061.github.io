@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Homepage</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="#">
+        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="头像" />
+        <span id="nav-name">你的名字</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        type="button"
+      >
+        ☰
+      </button>
+
+      <nav class="site-nav" id="site-nav">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <aside class="sidebar">
+      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="头像" />
+
+      <h1 class="name" id="name-cn">你的名字</h1>
+      <p class="en-name" id="name-en">Your English Name</p>
+      <p class="tagline" id="tagline"></p>
+
+      <div class="social-icons" id="social-links"></div>
+    </aside>
+
+    <main class="main">
+      <section class="section" id="about">
+        <h2>About Me</h2>
+        <div id="about-content"></div>
+      </section>
+
+      <section class="section" id="news">
+        <h2>News</h2>
+        <ul class="news-list" id="news-list"></ul>
+      </section>
+
+      <section class="section" id="projects">
+        <h2>Selected Projects</h2>
+        <div id="projects-list"></div>
+      </section>
+
+      <section class="section" id="education">
+        <h2>Education</h2>
+        <div id="education-list"></div>
+      </section>
+
+      <section class="section" id="experience">
+        <h2>Experience</h2>
+        <div id="experience-list"></div>
+      </section>
+
+      <section class="section" id="awards">
+        <h2>Honors & Awards</h2>
+        <ul class="simple-list" id="awards-list"></ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="./content.js"></script>
+</body>
+</html>
