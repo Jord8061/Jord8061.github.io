@@ -32,7 +32,7 @@
     nameCn: "陈瑾 | Jin Chen",
     college: "西南财经大学 · 人工智能",
     tagline:
-      "西南财经大学人工智能本科生，关注大语言模型、智能体、算法与实用 AI 系统。",
+      "关注大语言模型、智能体、算法与 AI4Biology",
     links: [
       { name: "邮箱", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -42,7 +42,7 @@
   },
 
   about: [
-    "我目前就读于西南财经大学人工智能专业，研究兴趣包括大语言模型、智能体与 LLM 系统。",
+    "我目前就读于西南财经大学人工智能专业，研究兴趣包括大语言模型、智能体与 LLM 系统，同时也对 AI for Biology 方向保持关注。",
     "我的背景覆盖算法竞赛、全栈开发与 AI 应用工程。相比单纯实现功能，我更关注研究思路与工程落地之间的连接。",
     "近期工作主要围绕 LLM 系统中的安全与效率问题，尤其关注 RAG、GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
   ],

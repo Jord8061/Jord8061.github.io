@@ -15,17 +15,6 @@
         <span id="nav-name">Your Name</span>
       </a>
 
-      <button
-        class="nav-toggle"
-        id="nav-toggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        type="button"
-      >
-        ☰
-      </button>
-
       <nav class="site-nav" id="site-nav">
         <a id="nav-about" href="#about">About</a>
         <a id="nav-news" href="#news">News</a>
@@ -34,6 +23,17 @@
         <a id="nav-experience" href="#experience">Experience</a>
         <a id="nav-awards" href="#awards">Awards</a>
       </nav>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="nav-overflow-menu"
+        type="button"
+      >
+        ☰
+      </button>
 
       <button
         class="lang-toggle"
@@ -45,6 +45,8 @@
         <span class="lang-toggle-option lang-toggle-en">EN</span>
         <span class="lang-toggle-option lang-toggle-zh">中文</span>
       </button>
+
+      <nav class="nav-overflow-menu" id="nav-overflow-menu" aria-label="More navigation"></nav>
     </div>
   </header>
 

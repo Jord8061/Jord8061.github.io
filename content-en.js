@@ -30,9 +30,9 @@
     navAvatar: "./assets/nav.jpg",
     navName: "Good day, Lord Phaethon",
     nameCn: "Jin Chen | 陈瑾",
-    college: "Artificial Intelligence · SWUFE",
+    college: "B.Eng. in AI · SWUFE",
     tagline:
-      "AI undergraduate at SWUFE, interested in LLMs, agents, algorithms, and practical AI systems.",
+      "Interested in LLMs, agents, algorithms, and AI4Biology",
     links: [
       { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -42,7 +42,7 @@
   },
 
   about: [
-    "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My research interests include large language models, intelligent agents, and LLM-based systems.",
+    "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My research interests include large language models, intelligent agents, and LLM-based systems, with an emerging interest in AI for biology.",
     "My background spans competitive programming, full-stack development, and AI application engineering. I enjoy connecting research ideas with solid implementation, especially in scenarios where system design, reasoning ability, and engineering reliability all matter.",
     "My recent work focuses on security and efficiency issues in LLM-based systems, particularly in RAG, GraphRAG, and agent memory settings. I pursue this line of research through ongoing collaboration with DEEP Lab."
   ],
