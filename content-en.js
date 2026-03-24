@@ -28,11 +28,11 @@
   profile: {
     avatar: "./assets/avatar.jpg",
     navAvatar: "./assets/nav.jpg",
-    navName: "Good day, Lord Phaethon",
+    navName: "Good day, everyone",
     nameCn: "Jin Chen | 陈瑾",
     college: "B.Eng. in AI · SWUFE",
     tagline:
-      "Interested in LLMs, agents, algorithms, and AI4Biology",
+      "Interested in LLMs, agents, algorithms, and AI for Biology",
     links: [
       { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -54,13 +54,13 @@
       date: "2025.10",
       text: "Delivered a speech as the student representative at the opening ceremony of the 2025 CCPC Girls Contest and won the Silver Medal.",
       url: "https://it.swufe.edu.cn/info/1167/20588.htm",
-      linkText: "Official News"
+      linkText: "⭐ Official News"
     },
     {
       date: "2025.06",
       text: "Became the Student General Head of Singularity Lab, School of Computing and Artificial Intelligence, SWUFE.",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
-      linkText: "Official News"
+      linkText: "⭐ Official News"
     }
   ],
 
@@ -72,7 +72,8 @@
         "A research project on adversarial attacks against GraphRAG systems. As a co-first author, I was responsible for the full experimental pipeline and made major contributions to method refinement and experimental design. The work studies how logical corruption can compromise GraphRAG reasoning while remaining stealthy at the text level. Code will be released after the review decision.",
       tags: ["GraphRAG", "Security", "LLM", "ACL Submission"],
       links: [
-        { name: "Paper", url: "#" }
+        { name: "Paper", url: "#" },
+        { name: "Code", url: "https://github.com/Jord8061/logicPoison" }
       ]
     },
     {
@@ -97,7 +98,7 @@
     },
     {
       title: "The No.1 Middle School Affiliated To Central China Normal University",
-      meta: "Senior High School | 2019.09 - 2022.06",
+      meta: "Senior High | 2019.09 - 2022.06",
       image: "./assets/华师一校徽.jpg",
       description:
         "Explored 3D printing and astronomy through extracurricular research projects during high school. I was part of a group that contributed to the discovery of asteroid 2021 GB68."
@@ -112,7 +113,7 @@
         "I am currently a front-end development intern at Taikang Online, where my team is actively exploring AI integration. Given my background in both AI and engineering, I am interested in contributing not only to current front-end development, but also to future AI-related system building and collaboration."
     },
     {
-      title: "China Center for Behavioral Economics and Finance, SWUFE",
+      title: "China Center for Behavioral Economics and Finance",
       meta: "RAG Project Crawling Engineer | 2025.02 - 2025.06",
       description:
         "Built the data acquisition pipeline for a RAG-oriented academic literature knowledge base. I designed multi-source crawlers, handled structured parsing and cleaning, and applied LLM-based judging to identify 4,000+ papers aligned with target topics in behavioral finance."
@@ -133,18 +134,38 @@
 
   awards: [
     {
-      title: "ICPC Asia Xi'an Regional Contest",
+      title: "The 2025 ICPC Asia Xi'an Regional Contest",
       date: "2025.10",
       description: "Bronze Medal | 2025.10",
-      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
-      thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg"
+      images: [
+        {
+          image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+          thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg",
+          alt: "ICPC Asia Xi'an Regional Contest bronze medal certificate"
+        },
+        {
+          image: "./assets/ICPC西安铜奖.png",
+          thumb: "./assets/thumbs/ICPC西安铜奖-thumb.jpg",
+          alt: "ICPC Xi'an Regional Contest bronze medal photo"
+        }
+      ]
     },
     {
-      title: "China Collegiate Programming Contest for Girls",
+      title: "2025 China Collegiate Programming Contest for Girls",
       date: "2025.10",
       description: "Silver Medal | 2025.10",
-      image: "./assets/China Collegiate Programming Contest for Girls.jpg",
-      thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg"
+      images: [
+        {
+          image: "./assets/China Collegiate Programming Contest for Girls.jpg",
+          thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg",
+          alt: "CCPC Girls Contest silver medal certificate"
+        },
+        {
+          image: "./assets/CCPC女生赛银奖.png",
+          thumb: "./assets/thumbs/CCPC女生赛银奖-thumb.jpg",
+          alt: "CCPC Girls Contest silver medal photo"
+        }
+      ]
     },
     {
       title: "Citi Cup Financial Innovation Application Competition",
@@ -161,11 +182,54 @@
       thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
-      title: "CCPC Guangxi Collegiate Programming Contest",
+      title: "SWUFE Merit Student, 2023-2024 Academic Year",
+      date: "2024.09",
+      description: "Merit Student | 2024.09",
+      image: "./assets/三好学生202409.jpg",
+      thumb: "./assets/thumbs/三好学生202409-thumb.jpg",
+      alt: "Merit student honor certificate"
+    },
+    {
+      title: "Third-Class Scholarship (First Semester, 2023-2024 Academic Year)",
+      date: "2024.06",
+      description: "Third-Class Scholarship | 2024.06",
+      image: "./assets/丙等奖学金202406.jpg",
+      thumb: "./assets/thumbs/丙等奖学金202406-thumb.jpg",
+      alt: "Third-class scholarship certificate"
+    },
+    {
+      title: "Cultural and Sports Activity Scholarship (First Semester, 2023-2024 Academic Year)",
+      date: "2024.05",
+      description: "Cultural and Sports Activity Scholarship | 2024.05",
+      image: "./assets/文体活动奖学金202405.jpg",
+      thumb: "./assets/thumbs/文体活动奖学金202405-thumb.jpg",
+      alt: "Cultural and sports activity scholarship certificate"
+    },
+    {
+      title: "2024 CCPC - The 7th Guangxi CPC - 2024 ASEAN-ICPC",
+      pinPosition: 3,
       date: "2024.05",
       description: "Gold Medal | 2024.05",
-      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
-      thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg"
+      images: [
+        {
+          image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+          thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg",
+          alt: "CCPC Guangxi Collegiate Programming Contest certificate"
+        },
+        {
+          image: "./assets/中国-东盟国际大学生程序设计大赛.png",
+          thumb: "./assets/thumbs/中国-东盟国际大学生程序设计大赛-thumb.jpg",
+          alt: "China-ASEAN International Collegiate Programming Contest photo"
+        }
+      ]
+    },
+    {
+      title: "The 10th Sichuan Provincial College Student Art Exhibition and Performance Activity",
+      date: "2023.08",
+      description: "Second Prize | 2023.08",
+      image: "./assets/大艺展省二等奖202308.jpg",
+      thumb: "./assets/thumbs/大艺展省二等奖202308-thumb.jpg",
+      alt: "Provincial second prize certificate in college art exhibition"
     },
     {
       title: "Chinese Collegiate Computing Contest (GPLT)",

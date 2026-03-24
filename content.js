@@ -5,6 +5,7 @@
 
 let currentLang = DATASETS.en ? "en" : "zh";
 let currentData = DATASETS[currentLang];
+let awardsExpanded = false;
 
 function escapeHtml(text) {
   return String(text)
@@ -109,6 +110,17 @@ function inferIconType(item) {
   return "default";
 }
 
+function inferProjectLinkType(link) {
+  const source = `${link?.name || ""} ${link?.url || ""}`.toLowerCase();
+  if (source.includes("arxiv")) return "arxiv";
+  if (source.includes("github")) return "github";
+  if (source.includes("openreview")) return "openreview";
+  if (source.includes("huggingface")) return "huggingface";
+  if (source.includes("paper")) return "paper";
+  if (source.includes("code")) return "code";
+  return "default";
+}
+
 function renderLinks(items) {
   const container = document.getElementById("social-links");
   if (!container) return;
@@ -139,9 +151,9 @@ function renderNews(items) {
   container.innerHTML = items
     .map((item) => {
       const linkHtml = item.url
-        ? ` <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkText || "Read more")}</a>`
+        ? ` <a class="news-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkText || "Read more")}</a>`
         : "";
-      return `<li><strong>${escapeHtml(item.date)}</strong> ${escapeHtml(item.text)}${linkHtml}</li>`;
+      return `<li><span class="news-main"><strong>${escapeHtml(item.date)}</strong> ${escapeHtml(item.text)}</span>${linkHtml}</li>`;
     })
     .join("");
 }
@@ -149,6 +161,7 @@ function renderNews(items) {
 function renderCardItems(items, targetId) {
   const container = document.getElementById(targetId);
   if (!container) return;
+  const isProjectSection = targetId === "projects-list";
 
   container.innerHTML = items
     .map((item) => {
@@ -157,9 +170,25 @@ function renderCardItems(items, targetId) {
         : "";
 
       const linksHtml = item.links
-        ? `<p>${item.links
-            .map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.name)}</a>`)
-            .join(" / ")}</p>`
+        ? (isProjectSection
+            ? `<div class="project-links">${item.links
+                .map((link) => {
+                  const linkType = inferProjectLinkType(link);
+                  const rawUrl = (link.url || "").trim();
+                  const isPlaceholder = rawUrl === "" || rawUrl === "#";
+                  const safeUrl = escapeHtml(isPlaceholder ? "#" : rawUrl);
+                  const safeName = escapeHtml(link.name || "Link");
+                  const externalAttrs = !isPlaceholder && /^https?:\/\//i.test(rawUrl)
+                    ? ` target="_blank" rel="noopener noreferrer"`
+                    : "";
+                  const disabledAttrs = isPlaceholder ? ` aria-disabled="true" tabindex="-1"` : "";
+                  const disabledClass = isPlaceholder ? " project-link-disabled" : "";
+                  return `<a class="project-link project-link-${linkType}${disabledClass}" href="${safeUrl}"${externalAttrs}${disabledAttrs}>${safeName}</a>`;
+                })
+                .join("")}</div>`
+            : `<p>${item.links
+                .map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.name)}</a>`)
+                .join(" / ")}</p>`)
         : "";
 
       return `
@@ -207,6 +236,8 @@ function renderEducation(items) {
 function renderAwards(items) {
   const container = document.getElementById("awards-list");
   if (!container) return;
+  const COLLAPSE_AFTER_DATE = 202408;
+  const isPinnedAward = (item) => item && typeof item === "object" && Number.isFinite(item.pinPosition);
 
   const parseAwardDate = (value) => {
     if (!value) return Number.NEGATIVE_INFINITY;
@@ -223,39 +254,167 @@ function renderAwards(items) {
   };
 
   const sortedItems = [...items].sort((a, b) => getAwardSortKey(b) - getAwardSortKey(a));
+  const pinnedIndex = sortedItems.findIndex((item) => isPinnedAward(item));
+  if (pinnedIndex !== -1) {
+    const [pinnedItem] = sortedItems.splice(pinnedIndex, 1);
+    const targetIndex = Math.max(0, Math.min(sortedItems.length, Math.floor(pinnedItem.pinPosition) - 1));
+    sortedItems.splice(targetIndex, 0, pinnedItem);
+  }
+  const collapsedItems = sortedItems.filter(
+    (item) => !isPinnedAward(item) && getAwardSortKey(item) < COLLAPSE_AFTER_DATE
+  );
+  const hasCollapsible = collapsedItems.length > 0;
+  const expandedLabel = currentLang === "zh" ? "收起更多奖项" : "Show fewer awards";
+  const collapsedLabel = currentLang === "zh" ? "展开更多奖项" : "Show more awards";
+  const toggleLabel = awardsExpanded ? expandedLabel : collapsedLabel;
   const lightboxPrefix = currentData?.ui?.lightboxOpenPrefix || "View full image: ";
 
-  container.innerHTML = sortedItems
-    .map((item) => {
-      if (typeof item === "string") return `<li>${escapeHtml(item)}</li>`;
+  const renderAwardItem = (item) => {
+    if (typeof item === "string") return `<li>${escapeHtml(item)}</li>`;
 
-      const title = escapeHtml(item.title || "Award");
-      const description = escapeHtml(item.description || "");
-      const imageSrc = item.image ? encodeURI(item.image) : "";
-      const thumbSrc = item.thumb ? encodeURI(item.thumb) : imageSrc;
-      const fullSrc = imageSrc || thumbSrc;
-      const imageAlt = escapeHtml(item.alt || item.title || "Award image");
-      const thumbHtml = thumbSrc
-        ? `<button class="award-thumb-trigger" type="button" data-fullsrc="${fullSrc}" data-alt="${imageAlt}" aria-label="${escapeHtml(lightboxPrefix)}${title}">
-            <img class="award-thumb" src="${thumbSrc}" alt="${imageAlt}" loading="lazy" decoding="async" fetchpriority="low" />
-          </button>`
-        : `<div class="award-thumb award-thumb-placeholder" aria-hidden="true"></div>`;
+    const rawTitle = item.title || "Award";
+    const title = escapeHtml(rawTitle);
+    const description = escapeHtml(item.description || "");
+    const mediaItems = Array.isArray(item.images) && item.images.length
+      ? item.images
+          .map((imageItem, index) => {
+            const fullSrc = imageItem?.image ? encodeURI(imageItem.image) : "";
+            const thumbSrc = imageItem?.thumb ? encodeURI(imageItem.thumb) : fullSrc;
+            if (!fullSrc && !thumbSrc) return null;
+            return {
+              fullSrc: fullSrc || thumbSrc,
+              thumbSrc: thumbSrc || fullSrc,
+              alt: escapeHtml(imageItem?.alt || `${rawTitle} image ${index + 1}`)
+            };
+          })
+          .filter(Boolean)
+      : (() => {
+          const imageSrc = item.image ? encodeURI(item.image) : "";
+          const thumbSrc = item.thumb ? encodeURI(item.thumb) : imageSrc;
+          if (!imageSrc && !thumbSrc) return [];
+          return [{
+            fullSrc: imageSrc || thumbSrc,
+            thumbSrc: thumbSrc || imageSrc,
+            alt: escapeHtml(item.alt || rawTitle || "Award image")
+          }];
+        })();
 
-      return `
-        <li class="award-item">
-          ${thumbHtml}
-          <div class="award-body">
-            <h3 class="award-title">${title}</h3>
-            ${description ? `<p class="award-desc">${description}</p>` : ""}
-          </div>
-        </li>
-      `;
-    })
-    .join("");
+    const buildThumbButton = (mediaItem, index, isSplit) => {
+      const ariaSuffix = isSplit ? ` (${index + 1})` : "";
+      const ariaLabel = escapeHtml(`${lightboxPrefix}${rawTitle}${ariaSuffix}`);
+      const triggerClass = isSplit ? "award-thumb-trigger award-thumb-split-trigger" : "award-thumb-trigger";
+      const imageClass = isSplit ? "award-thumb award-thumb-split" : "award-thumb";
+      return `<button class="${triggerClass}" type="button" data-fullsrc="${mediaItem.fullSrc}" data-alt="${mediaItem.alt}" aria-label="${ariaLabel}">
+          <img class="${imageClass}" src="${mediaItem.thumbSrc}" alt="${mediaItem.alt}" loading="lazy" decoding="async" fetchpriority="low" />
+        </button>`;
+    };
+
+    let thumbHtml = `<div class="award-thumb award-thumb-placeholder" aria-hidden="true"></div>`;
+    if (mediaItems.length === 1) {
+      thumbHtml = buildThumbButton(mediaItems[0], 0, false);
+    } else if (mediaItems.length > 1) {
+      thumbHtml = `<div class="award-thumb-group" style="--thumb-cols:${mediaItems.length}">
+          ${mediaItems.map((mediaItem, index) => buildThumbButton(mediaItem, index, true)).join("")}
+        </div>`;
+    }
+
+    return `
+      <li class="award-item">
+        ${thumbHtml}
+        <div class="award-body">
+          <h3 class="award-title">${title}</h3>
+          ${description ? `<p class="award-desc">${description}</p>` : ""}
+        </div>
+      </li>
+    `;
+  };
+
+  const baseItems = sortedItems.filter((item) => isPinnedAward(item) || getAwardSortKey(item) >= COLLAPSE_AFTER_DATE);
+  const baseHtml = baseItems.map((item) => renderAwardItem(item)).join("");
+  const foldedHtml = collapsedItems.map((item) => renderAwardItem(item)).join("");
+  const toggleHtml = hasCollapsible
+    ? `<li class="award-toggle-item">
+        <button
+          class="awards-fold-toggle"
+          type="button"
+          data-action="toggle-awards-fold"
+          data-expanded-label="${escapeHtml(expandedLabel)}"
+          data-collapsed-label="${escapeHtml(collapsedLabel)}"
+          aria-expanded="${awardsExpanded ? "true" : "false"}"
+        >${escapeHtml(toggleLabel)}</button>
+      </li>`
+    : "";
+  const foldedBlockHtml = hasCollapsible
+    ? `<li class="award-fold-item">
+        <ul class="awards-fold-list" data-role="awards-fold-list">${foldedHtml}</ul>
+      </li>`
+    : "";
+
+  container.innerHTML = `${baseHtml}${foldedBlockHtml}${toggleHtml}`;
+
+  const syncAwardsFoldState = (animate = false) => {
+    const foldList = container.querySelector('[data-role="awards-fold-list"]');
+    const toggleButton = container.querySelector('[data-action="toggle-awards-fold"]');
+    if (!foldList || !toggleButton) return;
+
+    const expandedLabel = toggleButton.getAttribute("data-expanded-label") || "";
+    const collapsedLabel = toggleButton.getAttribute("data-collapsed-label") || "";
+    toggleButton.textContent = awardsExpanded ? expandedLabel : collapsedLabel;
+    toggleButton.setAttribute("aria-expanded", String(awardsExpanded));
+
+    const targetHeight = foldList.scrollHeight;
+    if (!animate) {
+      foldList.style.transition = "none";
+      foldList.style.maxHeight = awardsExpanded ? `${targetHeight}px` : "0px";
+      foldList.style.opacity = awardsExpanded ? "1" : "0";
+      foldList.style.transform = awardsExpanded ? "translateY(0)" : "translateY(-6px)";
+      foldList.style.marginTop = awardsExpanded ? "8px" : "0px";
+      void foldList.offsetHeight;
+      foldList.style.transition = "";
+      return;
+    }
+
+    if (awardsExpanded) {
+      foldList.style.maxHeight = "0px";
+      foldList.style.opacity = "0";
+      foldList.style.transform = "translateY(-6px)";
+      foldList.style.marginTop = "0px";
+      window.requestAnimationFrame(() => {
+        foldList.style.maxHeight = `${targetHeight}px`;
+        foldList.style.opacity = "1";
+        foldList.style.transform = "translateY(0)";
+        foldList.style.marginTop = "8px";
+      });
+      return;
+    }
+
+    foldList.style.maxHeight = `${targetHeight}px`;
+    foldList.style.opacity = "1";
+    foldList.style.transform = "translateY(0)";
+    foldList.style.marginTop = "8px";
+    window.requestAnimationFrame(() => {
+      foldList.style.maxHeight = "0px";
+      foldList.style.opacity = "0";
+      foldList.style.transform = "translateY(-6px)";
+      foldList.style.marginTop = "0px";
+    });
+  };
+
+  syncAwardsFoldState(false);
 
   if (!container.dataset.lightboxBound) {
     container.addEventListener("click", (event) => {
-      const trigger = event.target.closest(".award-thumb-trigger");
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const toggleButton = target.closest('[data-action="toggle-awards-fold"]');
+      if (toggleButton) {
+        awardsExpanded = !awardsExpanded;
+        syncAwardsFoldState(true);
+        return;
+      }
+
+      const trigger = target.closest(".award-thumb-trigger");
       if (!trigger) return;
       const fullSrc = trigger.getAttribute("data-fullsrc");
       const fullAlt = trigger.getAttribute("data-alt") || "Award image";
@@ -264,6 +423,12 @@ function renderAwards(items) {
     });
     container.dataset.lightboxBound = "true";
   }
+}
+
+function syncExpandedAwardsHeight() {
+  const foldList = document.querySelector('#awards-list [data-role="awards-fold-list"]');
+  if (!foldList || !awardsExpanded) return;
+  foldList.style.maxHeight = `${foldList.scrollHeight}px`;
 }
 
 function renderPage(data) {
@@ -549,9 +714,13 @@ window.addEventListener("click", (event) => {
 });
 
 window.addEventListener("scroll", syncNavVisualState, { passive: true });
-window.addEventListener("resize", requestNavLayoutSync);
+window.addEventListener("resize", () => {
+  requestNavLayoutSync();
+  syncExpandedAwardsHeight();
+});
 window.addEventListener("load", () => {
   requestNavLayoutSync();
+  syncExpandedAwardsHeight();
   syncNavVisualState();
 });
 

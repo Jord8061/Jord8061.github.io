@@ -121,15 +121,15 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-left: 10px;
-  width: 98px;
-  height: 34px;
+  margin-left: 8px;
+  width: 84px;
+  height: 30px;
   padding: 2px;
   border: 1px solid #c4b5fd;
   border-radius: 999px;
   background: linear-gradient(135deg, #f5f3ff 0%, #eef2ff 100%);
   color: #64748b;
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.1;
@@ -434,7 +434,12 @@ html[lang^="en"] .main li {
   color: var(--muted);
 }
 
-.news-list,
+.news-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
 .simple-list {
   margin: 0;
   padding-left: 20px;
@@ -445,10 +450,130 @@ html[lang^="en"] .main li {
   margin-bottom: 8px;
 }
 
+.news-list li {
+  display: block;
+}
+
+.news-list li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.news-list .news-main {
+  display: inline;
+}
+
+.news-list .news-link {
+  float: right;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 2px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid #e9d5ff;
+  background: #faf5ff;
+  color: #6d28d9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.news-list .news-link::after {
+  content: "\2197";
+  margin-left: 4px;
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.news-list .news-link:hover {
+  color: #5b21b6;
+  border-color: #d8b4fe;
+  background: #f5f3ff;
+  transform: translateY(-1px);
+}
+
+.news-list .news-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.45);
+}
+
 .awards-list {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.award-toggle-item {
+  padding-top: 10px;
+  border-top: 1px dashed #e5e7eb;
+  margin-top: 8px;
+}
+
+.award-fold-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.awards-fold-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  margin-top: 0;
+  transition: max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), margin-top 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.awards-fold-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid #e9d5ff;
+  background: #faf5ff;
+  color: #6d28d9;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.awards-fold-toggle::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.18s ease;
+}
+
+.awards-fold-toggle[aria-expanded="true"]::after {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+.awards-fold-toggle:hover {
+  color: #5b21b6;
+  border-color: #d8b4fe;
+  background: #f5f3ff;
+}
+
+.awards-fold-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.45);
 }
 
 .award-item {
@@ -472,6 +597,40 @@ html[lang^="en"] .main li {
   border: 1px solid #e5e7eb;
   object-fit: cover;
   background: #f8fafc;
+}
+
+.award-thumb-group {
+  width: 136px;
+  height: 84px;
+  display: grid;
+  grid-template-columns: repeat(var(--thumb-cols, 2), minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.award-thumb-split-trigger {
+  border-radius: 0;
+}
+
+.award-thumb-split {
+  border: 0;
+  border-radius: 0;
+}
+
+.award-thumb-group .award-thumb-trigger {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.award-thumb-group .award-thumb {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
 }
 
 .award-thumb-trigger {
@@ -629,6 +788,114 @@ html[lang^="en"] .main li {
   font-size: 0.78rem;
 }
 
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.project-link:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.project-link-arxiv {
+  color: #b91c1c;
+  border-color: #fecaca;
+  background: #fff1f2;
+}
+
+.project-link-arxiv:hover {
+  color: #991b1b;
+  border-color: #fda4af;
+  background: #ffe4e6;
+}
+
+.project-link-github {
+  color: #111827;
+  border-color: #d1d5db;
+  background: #f8fafc;
+}
+
+.project-link-github:hover {
+  color: #030712;
+  border-color: #9ca3af;
+  background: #f1f5f9;
+}
+
+.project-link-openreview {
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.project-link-openreview:hover {
+  color: #1e40af;
+  border-color: #93c5fd;
+  background: #dbeafe;
+}
+
+.project-link-huggingface {
+  color: #92400e;
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.project-link-huggingface:hover {
+  color: #78350f;
+  border-color: #fcd34d;
+  background: #fef3c7;
+}
+
+.project-link-paper,
+.project-link-code,
+.project-link-default {
+  color: #6d28d9;
+  border-color: #e9d5ff;
+  background: #faf5ff;
+}
+
+.project-link-paper:hover,
+.project-link-code:hover,
+.project-link-default:hover {
+  color: #5b21b6;
+  border-color: #d8b4fe;
+  background: #f5f3ff;
+}
+
+.project-link-disabled,
+.project-link-disabled:hover,
+.project-link-disabled:focus-visible {
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  text-decoration: none;
+  transform: none;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
 .footer {
   padding-top: 22px;
   border-top: 1px solid var(--line);
@@ -689,6 +956,11 @@ html[lang^="en"] .main li {
     height: 66px;
   }
 
+  .award-thumb-group {
+    width: 100px;
+    height: 66px;
+  }
+
   .award-thumb-trigger {
     width: 100px;
     height: 66px;
@@ -715,3 +987,4 @@ html[lang^="en"] .main li {
     font-size: 1.22rem;
   }
 }
+

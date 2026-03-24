@@ -28,11 +28,11 @@
   profile: {
     avatar: "./assets/avatar.jpg",
     navAvatar: "./assets/nav.jpg",
-    navName: "日安，法厄同大人",
+    navName: "日安，欢迎光临喵~",
     nameCn: "陈瑾 | Jin Chen",
     college: "西南财经大学 · 人工智能",
     tagline:
-      "关注大语言模型、智能体、算法与 AI4Biology",
+      "关注大语言模型、智能体、算法，以及人工智能与生物学交叉方向",
     links: [
       { name: "邮箱", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -42,7 +42,7 @@
   },
 
   about: [
-    "我目前就读于西南财经大学人工智能专业，研究兴趣包括大语言模型、智能体与 LLM 系统，同时也对 AI for Biology 方向保持关注。",
+    "我目前就读于西南财经大学人工智能专业，研究兴趣包括大语言模型、智能体与 LLM 系统，同时也对人工智能与生物学交叉方向保持关注。",
     "我的背景覆盖算法竞赛、全栈开发与 AI 应用工程。相比单纯实现功能，我更关注研究思路与工程落地之间的连接。",
     "近期工作主要围绕 LLM 系统中的安全与效率问题，尤其关注 RAG、GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
   ],
@@ -54,13 +54,13 @@
       date: "2025.10",
       text: "作为学生代表在 2025 CCPC 女生赛开幕式发言，并获得银奖。",
       url: "https://it.swufe.edu.cn/info/1167/20588.htm",
-      linkText: "学院新闻"
+      linkText: "⭐ 学院新闻"
     },
     {
       date: "2025.06",
       text: "成为西南财经大学计算机与人工智能学院奇点工作室学生总负责人。",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
-      linkText: "学院新闻"
+      linkText: "⭐ 学院新闻"
     }
   ],
 
@@ -72,7 +72,8 @@
         "该项目研究 GraphRAG 系统中的对抗攻击问题。我负责实验流水线搭建，并在方法改进与实验设计中做出主要贡献。工作关注在文本层面保持隐蔽的同时，如何破坏推理链路。代码计划在评审结束后开源。",
       tags: ["GraphRAG", "安全", "LLM", "ACL 投稿"],
       links: [
-        { name: "论文", url: "#" }
+        { name: "论文", url: "#" },
+        { name: "代码", url: "https://github.com/Jord8061/logicPoison" }
       ]
     },
     {
@@ -112,7 +113,7 @@
         "目前在泰康在线从事前端开发，团队正积极探索 AI 融合场景。基于 AI 与工程复合背景，在前端工作的基础上，进一步参与 AI 系统建设与协作。"
     },
     {
-      title: "西南财经大学中国行为经济与行为金融研究中心",
+      title: "中国行为经济与行为金融研究中心",
       meta: "RAG 项目爬虫工程师 | 2025.02 - 2025.06",
       description:
         "负责面向学术文献知识库的 RAG 数据采集流程，设计多源爬虫与结构化解析清洗，并使用 LLM 判断筛选行为经济学主题论文 4000+ 篇。"
@@ -133,18 +134,38 @@
 
   awards: [
     {
-      title: "国际大学生程序设计大赛亚洲区域赛（西安）",
+      title: "第50届国际大学生程序设计竞赛亚洲区域赛（西安）",
       date: "2025.10",
       description: "铜奖 | 2025.10",
-      image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
-      thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg"
+      images: [
+        {
+          image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+          thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg",
+          alt: "ICPC亚洲区域赛（西安）铜奖证书"
+        },
+        {
+          image: "./assets/ICPC西安铜奖.png",
+          thumb: "./assets/thumbs/ICPC西安铜奖-thumb.jpg",
+          alt: "ICPC西安区域赛铜奖照片"
+        }
+      ]
     },
     {
-      title: "中国大学生程序设计竞赛女生专场",
+      title: "2025年中国大学生程序设计竞赛（女生专场）",
       date: "2025.10",
       description: "银奖 | 2025.10",
-      image: "./assets/China Collegiate Programming Contest for Girls.jpg",
-      thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg"
+      images: [
+        {
+          image: "./assets/China Collegiate Programming Contest for Girls.jpg",
+          thumb: "./assets/thumbs/China Collegiate Programming Contest for Girls-thumb.jpg",
+          alt: "CCPC女生专场银奖证书"
+        },
+        {
+          image: "./assets/CCPC女生赛银奖.png",
+          thumb: "./assets/thumbs/CCPC女生赛银奖-thumb.jpg",
+          alt: "CCPC女生赛银奖照片"
+        }
+      ]
     },
     {
       title: "第二十届“花旗杯”金融创新应用大赛",
@@ -161,11 +182,54 @@
       thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
-      title: "中国大学生程序设计竞赛广西省赛",
+      title: "2023-2024学年西南财经大学“三好学生”",
+      date: "2024.09",
+      description: "三好学生 | 2024.09",
+      image: "./assets/三好学生202409.jpg",
+      thumb: "./assets/thumbs/三好学生202409-thumb.jpg",
+      alt: "三好学生荣誉证书"
+    },
+    {
+      title: "2023-2024学年第一学期丙等奖学金",
+      date: "2024.06",
+      description: "丙等奖学金 | 2024.06",
+      image: "./assets/丙等奖学金202406.jpg",
+      thumb: "./assets/thumbs/丙等奖学金202406-thumb.jpg",
+      alt: "丙等奖学金证书"
+    },
+    {
+      title: "2023-2024学年第一学期“文体活动奖学金”",
+      date: "2024.05",
+      description: "文体活动奖学金 | 2024.05",
+      image: "./assets/文体活动奖学金202405.jpg",
+      thumb: "./assets/thumbs/文体活动奖学金202405-thumb.jpg",
+      alt: "文体活动奖学金证书"
+    },
+    {
+      title: "第七届广西大学生程序设计大赛暨2024中国-东盟国际大学生程序设计大赛",
+      pinPosition: 3,
       date: "2024.05",
       description: "金奖 | 2024.05",
-      image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
-      thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg"
+      images: [
+        {
+          image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+          thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg",
+          alt: "中国大学生程序设计竞赛广西省赛获奖证书"
+        },
+        {
+          image: "./assets/中国-东盟国际大学生程序设计大赛.png",
+          thumb: "./assets/thumbs/中国-东盟国际大学生程序设计大赛-thumb.jpg",
+          alt: "中国-东盟国际大学生程序设计大赛照片"
+        }
+      ]
+    },
+    {
+      title: "四川省第十届大学生艺术展演活动",
+      date: "2023.08",
+      description: "二等奖 | 2023.08",
+      image: "./assets/大艺展省二等奖202308.jpg",
+      thumb: "./assets/thumbs/大艺展省二等奖202308-thumb.jpg",
+      alt: "大艺展省二等奖证书"
     },
     {
       title: "CCCC-GPLT团体程序设计天梯赛",
