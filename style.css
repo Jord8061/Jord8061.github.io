@@ -485,10 +485,13 @@ html[lang^="en"] .main li {
 }
 
 .news-list .news-link::after {
-  content: "\2197";
+  content: "";
+  width: 6px;
+  height: 6px;
   margin-left: 4px;
-  font-size: 0.72rem;
-  line-height: 1;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: rotate(-45deg);
 }
 
 .news-list .news-link:hover {
@@ -985,6 +988,89 @@ html[lang^="en"] .main li {
 
   h2 {
     font-size: 1.22rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 960px) and (max-height: 560px) {
+  :root {
+    --header-height: 56px;
+    --anchor-offset: 4px;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
+  .site-header-inner {
+    padding: 0 12px;
+  }
+
+  .brand {
+    padding: 3px 6px;
+    font-size: 0.84rem;
+  }
+
+  .brand-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .site-nav a {
+    min-height: 30px;
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+
+  .nav-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .lang-toggle {
+    width: 74px;
+    height: 27px;
+    font-size: 0.68rem;
+  }
+
+  .page {
+    grid-template-columns: minmax(180px, 32vw) minmax(0, 1fr);
+    padding: 14px 14px 30px;
+    gap: 18px;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + 12px);
+  }
+
+  .avatar {
+    width: 138px;
+    height: 138px;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 1.34rem;
+  }
+
+  .college {
+    font-size: 0.88rem;
+  }
+
+  .tagline {
+    margin: 10px 0 8px;
+    font-size: 0.86rem;
+  }
+
+  .section {
+    padding: 16px 0;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    font-size: 1.18rem;
   }
 }
 

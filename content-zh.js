@@ -54,13 +54,13 @@
       date: "2025.10",
       text: "作为学生代表在 2025 CCPC 女生赛开幕式发言，并获得银奖。",
       url: "https://it.swufe.edu.cn/info/1167/20588.htm",
-      linkText: "⭐ 学院新闻"
+      linkText: "✨ 学院新闻"
     },
     {
       date: "2025.06",
       text: "成为西南财经大学计算机与人工智能学院奇点工作室学生总负责人。",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
-      linkText: "⭐ 学院新闻"
+      linkText: "✨ 学院新闻"
     }
   ],
 
@@ -136,7 +136,7 @@
     {
       title: "第50届国际大学生程序设计竞赛亚洲区域赛（西安）",
       date: "2025.10",
-      description: "铜奖 | 2025.10",
+      description: "🥉 铜奖 | 2025.10",
       images: [
         {
           image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
@@ -153,7 +153,7 @@
     {
       title: "2025年中国大学生程序设计竞赛（女生专场）",
       date: "2025.10",
-      description: "银奖 | 2025.10",
+      description: "🥈 银奖 | 2025.10",
       images: [
         {
           image: "./assets/China Collegiate Programming Contest for Girls.jpg",
@@ -209,7 +209,7 @@
       title: "第七届广西大学生程序设计大赛暨2024中国-东盟国际大学生程序设计大赛",
       pinPosition: 3,
       date: "2024.05",
-      description: "金奖 | 2024.05",
+      description: "🥇 金奖 | 2024.05",
       images: [
         {
           image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",

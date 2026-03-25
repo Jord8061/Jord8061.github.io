@@ -264,8 +264,8 @@ function renderAwards(items) {
     (item) => !isPinnedAward(item) && getAwardSortKey(item) < COLLAPSE_AFTER_DATE
   );
   const hasCollapsible = collapsedItems.length > 0;
-  const expandedLabel = currentLang === "zh" ? "收起更多奖项" : "Show fewer awards";
-  const collapsedLabel = currentLang === "zh" ? "展开更多奖项" : "Show more awards";
+  const expandedLabel = currentLang === "zh" ? "🏅 收起更多奖项" : "🏅 Show fewer awards";
+  const collapsedLabel = currentLang === "zh" ? "🏅 展开更多奖项" : "🏅 Show more awards";
   const toggleLabel = awardsExpanded ? expandedLabel : collapsedLabel;
   const lightboxPrefix = currentData?.ui?.lightboxOpenPrefix || "View full image: ";
 

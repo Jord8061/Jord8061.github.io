@@ -54,13 +54,13 @@
       date: "2025.10",
       text: "Delivered a speech as the student representative at the opening ceremony of the 2025 CCPC Girls Contest and won the Silver Medal.",
       url: "https://it.swufe.edu.cn/info/1167/20588.htm",
-      linkText: "⭐ Official News"
+      linkText: "✨ Official News"
     },
     {
       date: "2025.06",
       text: "Became the Student General Head of Singularity Lab, School of Computing and Artificial Intelligence, SWUFE.",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
-      linkText: "⭐ Official News"
+      linkText: "✨ Official News"
     }
   ],
 
@@ -136,7 +136,7 @@
     {
       title: "The 2025 ICPC Asia Xi'an Regional Contest",
       date: "2025.10",
-      description: "Bronze Medal | 2025.10",
+      description: "🥉 Bronze Medal | 2025.10",
       images: [
         {
           image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
@@ -153,7 +153,7 @@
     {
       title: "2025 China Collegiate Programming Contest for Girls",
       date: "2025.10",
-      description: "Silver Medal | 2025.10",
+      description: "🥈 Silver Medal | 2025.10",
       images: [
         {
           image: "./assets/China Collegiate Programming Contest for Girls.jpg",
@@ -209,7 +209,7 @@
       title: "2024 CCPC - The 7th Guangxi CPC - 2024 ASEAN-ICPC",
       pinPosition: 3,
       date: "2024.05",
-      description: "Gold Medal | 2024.05",
+      description: "🥇 Gold Medal | 2024.05",
       images: [
         {
           image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
