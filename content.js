@@ -80,8 +80,8 @@ function getIconSvg(iconType) {
     case "openreview":
       return `
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 2.5A9.5 9.5 0 1 0 21.5 12 9.5 9.5 0 0 0 12 2.5zm0 2a7.5 7.5 0 1 1-7.5 7.5A7.5 7.5 0 0 1 12 4.5z"></path>
-          <path d="M8.8 8h3.6a3.2 3.2 0 0 1 0 6.4h-1.4V17H8.8V8zm2.2 2v2.4h1.3a1.2 1.2 0 0 0 0-2.4H11z"></path>
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+          <text x="12" y="15" text-anchor="middle" font-size="8" font-weight="700" font-family="Arial, sans-serif" fill="currentColor">OR</text>
         </svg>
       `;
     case "orcid":
@@ -89,6 +89,18 @@ function getIconSvg(iconType) {
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2zm-4.6 4.4a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2zM6.4 9.7h2v8.1h-2z"></path>
           <path d="M10.3 9.7h4a3.1 3.1 0 1 1 0 6.2h-2v1.9h-2V9.7zm2 1.8V14h1.9a1.2 1.2 0 0 0 0-2.5h-1.9z"></path>
+        </svg>
+      `;
+    case "csdn":
+      return `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4.693 13.638c-.497.568-1.363.63-1.712.63c-.648 0-1.144-.164-1.474-.488c-.313-.307-.478-.76-.489-1.346c-.025-1.358.744-2.762 2.074-2.762c.635 0 1.124.455 1.311.644a.34.34 0 0 0 .282.099a.38.38 0 0 0 .241-.159c.068-.087.135-.237.138-.401s-.057-.344-.243-.49a2.64 2.64 0 0 0-1.668-.591c-.819 0-1.627.376-2.218 1.033c-.621.691-.953 1.63-.935 2.646c.015.815.282 1.5.773 1.982c.528.518 1.3.791 2.235.791c1.097 0 1.776-.325 2.154-.597a.58.58 0 0 0 .24-.456a.7.7 0 0 0-.208-.497c-.23-.248-.448-.101-.503-.037Zm4.97-2.15a8 8 0 0 0-.698-.248q-.237-.072-.45-.131c-.922-.26-1.027-.5-1.017-.68c.022-.363.515-.853 1.352-.792c.607.045 1.015.509 1.205.781c.149.214.371.135.434.095a.6.6 0 0 0 .309-.514a.63.63 0 0 0-.209-.488a2.654 2.654 0 0 0-3.347-.273c-.456.323-.744.772-.77 1.202c-.064 1.061 1.015 1.366 1.803 1.588c.214.061.429.127.667.202c1.14.357 1.173.717 1.092 1.267c-.082.556-.696.834-1.685.761c-1.029-.076-1.464-.61-1.612-.901c-.05-.098-.205-.248-.413-.156c-.514.229-.473.731-.26.993c.339.416 1.15 1.035 2.667 1.035c1.734 0 2.255-.875 2.378-1.64c.092-.572-.022-1.028-.348-1.396c-.236-.267-.592-.495-1.101-.706Zm6.777-2.165c-.598-.431-1.393-.61-2.36-.532c-.712.058-1.274.243-1.335.263l-.006.002a.44.44 0 0 0-.297.379l-.47 5.201a.34.34 0 0 0 .247.35l.072.02l.066.018l.086.021a8 8 0 0 0 1.64.183c.972 0 1.765-.23 2.36-.684c.764-.583 1.141-1.5 1.118-2.725c-.021-1.135-.398-1.974-1.121-2.495Zm-.662 4.461c-.836.639-2.09.562-2.677.481a.13.13 0 0 1-.109-.137l.397-4.248a.11.11 0 0 1 .086-.1c.999-.241 1.777-.168 2.312.218c.189.137.348.331.471.568c.176.339.277.765.286 1.234c.017.916-.24 1.583-.765 1.984Zm8.189-3.374a1.9 1.9 0 0 0-.432-.919c-.399-.465-1.029-.689-1.848-.689c-.734 0-1.372.228-1.947.799c.007-.086.019-.159.018-.223s-.017-.116-.066-.163c-.048-.045-.077-.067-.127-.077s-.122-.008-.256-.006a.587.587 0 0 0-.589.54s-.325 3.874-.428 5.165a.3.3 0 0 0 .073.228a.36.36 0 0 0 .26.131h.387a.224.224 0 0 0 .226-.205l.273-2.929l.014-.147a2 2 0 0 1 .082-.412q.021-.068.047-.14c.245-.694.803-1.72 1.971-1.694c.84.018 1.449.455 1.385 1.114c-.101 1.034-.266 3.1-.358 4.14c-.019.209.182.273.252.273h.304a.44.44 0 0 0 .444-.404s.185-2.127.294-3.352l.048-.532a2 2 0 0 0-.026-.5Z"></path>
+        </svg>
+      `;
+    case "huggingface":
+      return `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378c0 1.112.178 2.181.503 3.185c.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284c.278.173.48.408.71.694c.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542c.01.026.653 1.552 1.657 2.54c.616.605 1.01 1.223 1.082 1.912c.055.537-.096 1.059-.38 1.572c.637.121 1.294.187 1.967.187c.657 0 1.298-.063 1.921-.178c-.287-.517-.44-1.041-.384-1.581c.07-.69.465-1.307 1.081-1.913c1.004-.987 1.647-2.513 1.657-2.539c.021-.074.083-.285.233-.542c.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952c.23-.286.432-.52.71-.694c.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378"></path>
         </svg>
       `;
     default:
@@ -107,6 +119,7 @@ function inferIconType(item) {
   if (source.includes("scholar")) return "scholar";
   if (source.includes("openreview")) return "openreview";
   if (source.includes("orcid")) return "orcid";
+  if (source.includes("csdn")) return "csdn";
   return "default";
 }
 
@@ -119,6 +132,26 @@ function inferProjectLinkType(link) {
   if (source.includes("paper")) return "paper";
   if (source.includes("code")) return "code";
   return "default";
+}
+
+function getProjectLinkIconSvg(linkType) {
+  switch (linkType) {
+    case "arxiv":
+      return `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3.8 18.5 9.2 5.7h2.1l5.5 12.8h-2.4l-1.3-3.1H7.4l-1.3 3.1H3.8zm4.4-5.1h4.1L10.2 8z"></path>
+          <path d="M16.4 7.2h3.8v1.9h-3.8zM16.4 10.8h3.8v1.9h-3.8z"></path>
+        </svg>
+      `;
+    case "github":
+      return getIconSvg("github");
+    case "openreview":
+      return getIconSvg("openreview");
+    case "huggingface":
+      return getIconSvg("huggingface");
+    default:
+      return "";
+  }
 }
 
 function renderLinks(items) {
@@ -174,6 +207,10 @@ function renderCardItems(items, targetId) {
             ? `<div class="project-links">${item.links
                 .map((link) => {
                   const linkType = inferProjectLinkType(link);
+                  const iconSvg = getProjectLinkIconSvg(linkType);
+                  const iconHtml = linkType === "huggingface"
+                    ? `<span class="project-link-icon project-link-icon-emoji" aria-hidden="true">🤗</span>`
+                    : (iconSvg ? `<span class="project-link-icon" aria-hidden="true">${iconSvg}</span>` : "");
                   const rawUrl = (link.url || "").trim();
                   const isPlaceholder = rawUrl === "" || rawUrl === "#";
                   const safeUrl = escapeHtml(isPlaceholder ? "#" : rawUrl);
@@ -183,7 +220,7 @@ function renderCardItems(items, targetId) {
                     : "";
                   const disabledAttrs = isPlaceholder ? ` aria-disabled="true" tabindex="-1"` : "";
                   const disabledClass = isPlaceholder ? " project-link-disabled" : "";
-                  return `<a class="project-link project-link-${linkType}${disabledClass}" href="${safeUrl}"${externalAttrs}${disabledAttrs}>${safeName}</a>`;
+                  return `<a class="project-link project-link-${linkType}${disabledClass}" href="${safeUrl}"${externalAttrs}${disabledAttrs}>${iconHtml}<span class="project-link-label">${safeName}</span></a>`;
                 })
                 .join("")}</div>`
             : `<p>${item.links

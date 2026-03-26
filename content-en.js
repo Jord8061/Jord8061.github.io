@@ -26,8 +26,8 @@
   },
 
   profile: {
-    avatar: "./assets/avatar.jpg",
-    navAvatar: "./assets/nav.jpg",
+    avatar: "./assets/avatar-512.jpg",
+    navAvatar: "./assets/nav-64.jpg",
     navName: "Good day, everyone",
     nameCn: "Jin Chen | 陈瑾",
     college: "B.Eng. in AI · SWUFE",
@@ -36,8 +36,9 @@
     links: [
       { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
+      { name: "CSDN", url: "https://blog.csdn.net/2201_76033853", icon: "csdn" },
       { name: "OpenReview", url: "https://openreview.net/profile?id=%7EJin_Chen12", icon: "openreview" },
-      { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
+      // { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
     ]
   },
 
@@ -173,7 +174,7 @@
       ]
     },
     {
-      title: "Citi Cup Financial Innovation Application Competition",
+      title: "The 20th Citi Cup Financial Innovation Application Competition",
       date: "2025.06",
       description: "National Third Prize | 2025.06",
       image: "./assets/Citi Cup Financial Innovation Application Competition_01.png",
@@ -250,5 +251,9 @@
       image: "./assets/Lanqiao Cup (Python A Group).jpg",
       thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
-  ]
+  ],
+
+  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
 };
+
+

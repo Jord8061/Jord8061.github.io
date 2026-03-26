@@ -3,16 +3,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Academic Homepage</title>
-  <link rel="icon" type="image/png" href="./assets/奇点工作室.png" />
-  <link rel="preload" as="image" href="./assets/avatar.jpg" />
-  <link rel="preload" as="image" href="./assets/nav.jpg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="./assets/avatar-256.jpg" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="#">
-        <img id="nav-avatar" class="brand-avatar" src="./assets/avatar.jpg" alt="Avatar" width="32" height="32" loading="eager" decoding="async" />
+        <img id="nav-avatar" class="brand-avatar" src="./assets/nav-64.jpg" alt="Avatar" width="32" height="32" loading="eager" decoding="async" />
         <span id="nav-name">Your Name</span>
       </a>
 
@@ -53,7 +53,7 @@
 
   <div class="page">
     <aside class="sidebar">
-      <img id="avatar" class="avatar" src="./assets/avatar.jpg" alt="Avatar" width="256" height="256" loading="eager" fetchpriority="high" decoding="async" />
+      <img id="avatar" class="avatar" src="./assets/avatar-512.jpg" srcset="./assets/avatar-256.jpg 256w, ./assets/avatar-512.jpg 512w" sizes="256px" alt="Avatar" width="256" height="256" loading="eager" fetchpriority="high" decoding="async" />
 
       <h1 class="name" id="name-cn">Your Name</h1>
       <p class="college" id="college">Your School</p>
@@ -92,6 +92,8 @@
         <h2 id="heading-awards">Honors & Awards</h2>
         <ul class="awards-list" id="awards-list"></ul>
       </section>
+
+      <div class="footer" id="footer-text">© 2026 Jord. All rights reserved. Last updated: 2026.03.</div>
     </main>
   </div>
 

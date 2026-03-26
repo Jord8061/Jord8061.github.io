@@ -26,8 +26,8 @@
   },
 
   profile: {
-    avatar: "./assets/avatar.jpg",
-    navAvatar: "./assets/nav.jpg",
+    avatar: "./assets/avatar-512.jpg",
+    navAvatar: "./assets/nav-64.jpg",
     navName: "日安，欢迎光临喵~",
     nameCn: "陈瑾 | Jin Chen",
     college: "西南财经大学 · 人工智能",
@@ -36,8 +36,9 @@
     links: [
       { name: "邮箱", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
+      { name: "CSDN", url: "https://blog.csdn.net/2201_76033853", icon: "csdn" },
       { name: "OpenReview", url: "https://openreview.net/profile?id=%7EJin_Chen12", icon: "openreview" },
-      { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
+      // { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
     ]
   },
 
@@ -251,5 +252,9 @@
       image: "./assets/Lanqiao Cup (Python A Group).jpg",
       thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
-  ]
+  ],
+
+  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
 };
+
+
