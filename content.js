@@ -227,7 +227,7 @@ function renderEducation(items) {
         ? escapeHtml(rawTipTemplate).replace("{{link}}", tipLinkHtml || tipLinkText || "")
         : "";
       const tipHtml = tipBodyHtml
-        ? `<span class="edu-inline-tip" tabindex="0" role="note" aria-label="${tipAriaText}">${tipMarker}<span class="edu-inline-tip-bubble">${tipBodyHtml}</span></span>`
+        ? `<span class="edu-inline-tip-wrap"><button class="edu-inline-tip" type="button" aria-expanded="false" aria-label="${tipAriaText}">${tipMarker}</button><span class="edu-inline-tip-content" hidden>${tipBodyHtml}</span></span>`
         : "";
       let description = escapeHtml(item.description || "").replace(/\r?\n/g, "<br>");
       if (tipHtml) {
@@ -654,6 +654,137 @@ function syncNavVisualState() {
   syncActiveNavOnScroll();
 }
 
+function isMobileTooltipMode() {
+  return window.matchMedia("(max-width: 640px), (hover: none), (pointer: coarse)").matches;
+}
+
+let educationTipLayer = null;
+let educationTipContent = null;
+let activeEducationTip = null;
+let educationTipPinned = false;
+let educationTipHideTimer = 0;
+
+function ensureEducationTipLayer() {
+  if (educationTipLayer && educationTipContent) return;
+  const layer = document.createElement("div");
+  layer.className = "edu-tip-float";
+  layer.setAttribute("aria-hidden", "true");
+  layer.setAttribute("data-placement", "top");
+  const content = document.createElement("div");
+  content.className = "edu-tip-float-content";
+  layer.appendChild(content);
+  document.body.appendChild(layer);
+  educationTipLayer = layer;
+  educationTipContent = content;
+
+  layer.addEventListener("mouseenter", () => {
+    clearEducationTipHideTimer();
+  });
+
+  layer.addEventListener("mouseleave", () => {
+    if (!educationTipPinned) scheduleEducationTipHide(150);
+  });
+}
+
+function clearEducationTipHideTimer() {
+  if (!educationTipHideTimer) return;
+  window.clearTimeout(educationTipHideTimer);
+  educationTipHideTimer = 0;
+}
+
+function setEducationTipAnchorState(anchor, open) {
+  if (!(anchor instanceof HTMLElement)) return;
+  anchor.classList.toggle("open", open);
+  anchor.setAttribute("aria-expanded", String(open));
+}
+
+function positionEducationTipLayer(anchor) {
+  if (!(anchor instanceof HTMLElement) || !educationTipLayer) return;
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const padding = 8;
+  const gap = 10;
+  const anchorRect = anchor.getBoundingClientRect();
+  const anchorCenterX = anchorRect.left + anchorRect.width / 2;
+
+  const maxWidth = Math.min(360, viewportWidth - padding * 2);
+  const minWidth = Math.min(220, maxWidth);
+  educationTipLayer.style.width = `${Math.max(minWidth, maxWidth)}px`;
+  educationTipLayer.style.setProperty("--edu-tip-left", `${padding}px`);
+  educationTipLayer.style.setProperty("--edu-tip-top", `${padding}px`);
+  educationTipLayer.style.setProperty("--edu-tip-arrow-left", "50%");
+  educationTipLayer.setAttribute("data-placement", "top");
+
+  const layerRect = educationTipLayer.getBoundingClientRect();
+  const layerWidth = layerRect.width;
+  const layerHeight = layerRect.height;
+  const left = Math.max(padding, Math.min(anchorCenterX - layerWidth / 2, viewportWidth - padding - layerWidth));
+  const spaceAbove = anchorRect.top - padding;
+  const spaceBelow = viewportHeight - anchorRect.bottom - padding;
+  const prefersBottom = spaceAbove < layerHeight + gap && spaceBelow > spaceAbove;
+  const placement = prefersBottom ? "bottom" : "top";
+  const idealTop = placement === "bottom" ? anchorRect.bottom + gap : anchorRect.top - layerHeight - gap;
+  const top = Math.max(padding, Math.min(idealTop, viewportHeight - padding - layerHeight));
+  const arrowLeft = Math.max(14, Math.min(layerWidth - 14, anchorCenterX - left));
+
+  educationTipLayer.style.setProperty("--edu-tip-left", `${Math.round(left)}px`);
+  educationTipLayer.style.setProperty("--edu-tip-top", `${Math.round(top)}px`);
+  educationTipLayer.style.setProperty("--edu-tip-arrow-left", `${Math.round(arrowLeft)}px`);
+  educationTipLayer.setAttribute("data-placement", placement);
+}
+
+function hideEducationTip(immediate = false) {
+  clearEducationTipHideTimer();
+  if (activeEducationTip) {
+    setEducationTipAnchorState(activeEducationTip, false);
+  }
+  activeEducationTip = null;
+  educationTipPinned = false;
+  if (!educationTipLayer) return;
+  educationTipLayer.classList.remove("open");
+  educationTipLayer.setAttribute("aria-hidden", "true");
+  educationTipLayer.removeAttribute("data-active-tip");
+  if (immediate) {
+    educationTipLayer.style.transition = "none";
+    window.requestAnimationFrame(() => {
+      if (!educationTipLayer) return;
+      educationTipLayer.style.transition = "";
+    });
+  }
+}
+
+function scheduleEducationTipHide(delay = 120) {
+  clearEducationTipHideTimer();
+  educationTipHideTimer = window.setTimeout(() => {
+    if (educationTipPinned) return;
+    hideEducationTip();
+  }, delay);
+}
+
+function showEducationTip(anchor, pinned = false) {
+  if (!(anchor instanceof HTMLElement)) return;
+  const wrap = anchor.closest(".edu-inline-tip-wrap");
+  const source = wrap ? wrap.querySelector(".edu-inline-tip-content") : null;
+  if (!(source instanceof HTMLElement)) return;
+
+  ensureEducationTipLayer();
+  if (!educationTipLayer || !educationTipContent) return;
+  clearEducationTipHideTimer();
+
+  if (activeEducationTip && activeEducationTip !== anchor) {
+    setEducationTipAnchorState(activeEducationTip, false);
+  }
+  activeEducationTip = anchor;
+  educationTipPinned = pinned;
+  setEducationTipAnchorState(anchor, true);
+
+  educationTipContent.innerHTML = source.innerHTML;
+  educationTipLayer.setAttribute("data-active-tip", "true");
+  educationTipLayer.classList.add("open");
+  educationTipLayer.setAttribute("aria-hidden", "false");
+  positionEducationTipLayer(anchor);
+}
+
 function setLanguage(lang) {
   const nextLang = DATASETS[lang] ? lang : "en";
   if (!DATASETS[nextLang]) return;
@@ -667,6 +798,7 @@ function setLanguage(lang) {
   renderPage(currentData);
   requestNavLayoutSync();
   syncNavVisualState();
+  hideEducationTip(true);
 }
 
 if (header && navToggle && siteNav) {
@@ -728,6 +860,7 @@ window.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   closeImageLightbox();
   closeMobileNav();
+  hideEducationTip(true);
 });
 
 window.addEventListener("click", (event) => {
@@ -742,20 +875,100 @@ window.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   const target = event.target;
   if (!(target instanceof Element)) return;
+
   const disabledProjectLink = target.closest("a.project-link-disabled");
-  if (!disabledProjectLink) return;
-  event.preventDefault();
+  if (disabledProjectLink) {
+    event.preventDefault();
+    return;
+  }
+
+  const tipAnchor = target.closest(".edu-inline-tip");
+  if (tipAnchor) {
+    event.preventDefault();
+    const willClose = activeEducationTip === tipAnchor && educationTipPinned;
+    if (willClose) {
+      hideEducationTip();
+    } else {
+      showEducationTip(tipAnchor, true);
+    }
+    return;
+  }
+
+  if (educationTipLayer && educationTipLayer.contains(target)) {
+    return;
+  }
+
+  hideEducationTip();
 });
 
-window.addEventListener("scroll", syncNavVisualState, { passive: true });
+document.addEventListener("mouseover", (event) => {
+  if (isMobileTooltipMode()) return;
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const anchor = target.closest(".edu-inline-tip");
+  if (!anchor) return;
+
+  const related = event.relatedTarget;
+  if (related instanceof Node && anchor.contains(related)) return;
+  showEducationTip(anchor, false);
+});
+
+document.addEventListener("mouseout", (event) => {
+  if (isMobileTooltipMode()) return;
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const anchor = target.closest(".edu-inline-tip");
+  if (!anchor) return;
+
+  const related = event.relatedTarget;
+  if (related instanceof Node) {
+    if (anchor.contains(related)) return;
+    if (educationTipLayer && educationTipLayer.contains(related)) return;
+  }
+  if (!educationTipPinned) scheduleEducationTipHide(140);
+});
+
+document.addEventListener("focusin", (event) => {
+  if (isMobileTooltipMode()) return;
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const anchor = target.closest(".edu-inline-tip");
+  if (!anchor) return;
+  showEducationTip(anchor, false);
+});
+
+document.addEventListener("focusout", (event) => {
+  if (isMobileTooltipMode()) return;
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const anchor = target.closest(".edu-inline-tip");
+  if (!anchor) return;
+
+  const related = event.relatedTarget;
+  if (related instanceof Node && educationTipLayer && educationTipLayer.contains(related)) {
+    return;
+  }
+  if (!educationTipPinned) scheduleEducationTipHide(140);
+});
+
+window.addEventListener(
+  "scroll",
+  () => {
+    syncNavVisualState();
+    hideEducationTip(true);
+  },
+  { passive: true }
+);
 window.addEventListener("resize", () => {
   requestNavLayoutSync();
   syncExpandedAwardsHeight();
+  hideEducationTip(true);
 });
 window.addEventListener("load", () => {
   requestNavLayoutSync();
   syncExpandedAwardsHeight();
   syncNavVisualState();
+  hideEducationTip(true);
 });
 
 if (document.fonts && document.fonts.ready) {

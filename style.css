@@ -776,32 +776,45 @@ html[lang^="en"] .main li {
   font-size: 0.9rem;
 }
 
+.edu-inline-tip-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.edu-inline-tip-content {
+  display: none;
+}
+
 .edu-inline-tip {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.08em;
   height: 1.08em;
   margin-left: 4px;
+  padding: 0;
   border-radius: 50%;
   border: 1px solid #cbd5e1;
   background: #f8fafc;
   color: #64748b;
+  font-family: inherit;
   font-weight: 700;
   font-size: 0.66em;
   line-height: 1;
-  vertical-align: super;
-  cursor: help;
+  vertical-align: middle;
+  cursor: pointer;
   box-shadow: 0 2px 6px -5px rgba(15, 23, 42, 0.35);
-  transform: translateY(-0.04em);
+  position: relative;
+  top: -0.22em;
+  transform: none;
 }
 
-.edu-inline-tip-bubble {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 6px);
-  width: clamp(220px, 58vw, 420px);
+.edu-tip-float {
+  position: fixed;
+  left: var(--edu-tip-left, 8px);
+  top: var(--edu-tip-top, 8px);
+  width: min(360px, calc(100vw - 16px));
+  max-width: calc(100vw - 16px);
   padding: 9px 11px;
   border: 1px solid #cbd5e1;
   border-radius: 10px;
@@ -813,25 +826,45 @@ html[lang^="en"] .main li {
   text-align: left;
   white-space: normal;
   box-shadow: 0 14px 24px -16px rgba(15, 23, 42, 0.5);
-  transform: translate(-50%, 4px);
+  transform: translateY(4px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.16s ease 0.12s, transform 0.16s ease 0.12s, visibility 0s linear 0.28s;
-  z-index: 30;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0s linear 0.14s;
+  z-index: 220;
 }
 
-.edu-inline-tip-bubble::before {
+.edu-tip-float.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s, 0s, 0s;
+}
+
+.edu-tip-float::before {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 100%;
-  width: 8px;
-  height: 8px;
+  left: var(--edu-tip-arrow-left, 50%);
+  width: 10px;
+  height: 10px;
   border-left: 1px solid #cbd5e1;
   border-bottom: 1px solid #cbd5e1;
   background: #ffffff;
-  transform: translate(-50%, -2px) rotate(-45deg);
+}
+
+.edu-tip-float[data-placement="top"]::before {
+  top: 100%;
+  transform: translate(-50%, -5px) rotate(-45deg);
+}
+
+.edu-tip-float[data-placement="bottom"]::before {
+  bottom: 100%;
+  transform: translate(-50%, 5px) rotate(135deg);
+}
+
+.edu-tip-float-content {
+  overflow-wrap: break-word;
 }
 
 .edu-tip-link {
@@ -853,19 +886,15 @@ html[lang^="en"] .main li {
   background: #f1f5f9;
 }
 
+.edu-inline-tip.open {
+  color: #475569;
+  border-color: #94a3b8;
+  background: #f1f5f9;
+}
+
 .edu-inline-tip:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.35);
-}
-
-.edu-inline-tip:hover .edu-inline-tip-bubble,
-.edu-inline-tip:focus-visible .edu-inline-tip-bubble,
-.edu-inline-tip:focus-within .edu-inline-tip-bubble {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
-  pointer-events: auto;
-  transition-delay: 0s, 0s, 0s;
 }
 
 .badges {
@@ -1027,6 +1056,11 @@ html[lang^="en"] .main li {
   .icon-link {
     width: 30px;
     height: 30px;
+  }
+
+  .edu-tip-float {
+    width: min(320px, calc(100vw - 16px));
+    font-size: 0.9rem;
   }
 
   .award-item {

@@ -95,7 +95,11 @@
       meta: "B.Eng. in Artificial Intelligence | 2022.09 - 2026.06",
       image: "./assets/swufelogo.png",
       description:
-        "GPA: 3.4/5.0 · Average Score: 85.40/100 · Ranking: 2/25\nRelevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building."
+        "GPA: 3.4/5.0 · Average Score: 85.40/100 · Ranking: 2/25\nRelevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building.",
+      descriptionTip:
+        "According to the comprehensive evaluation method in {{link}}, the final score is composed of academic performance and bonus points for comprehensive abilities, and is ranked within the major.",
+      descriptionTipLinkText: "SWUFE SCAI Implementation Rules for Recommended Admission to Graduate Study",
+      descriptionTipLinkUrl: "https://it.swufe.edu.cn/info/1166/1724.htm"
     },
     {
       title: "The No.1 Middle School Affiliated To Central China Normal University",
