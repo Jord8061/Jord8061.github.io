@@ -32,7 +32,7 @@
     nameCn: "陈瑾 | Jin Chen",
     college: "西南财经大学 · 人工智能",
     tagline:
-      "关注大语言模型、智能体、算法，以及人工智能与生物学交叉方向",
+      "从算法竞赛到大语言模型系统与AI安全",
     links: [
       { name: "邮箱", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -42,14 +42,14 @@
   },
 
   about: [
-    "我目前就读于西南财经大学人工智能专业，研究兴趣包括大语言模型、智能体与 LLM 系统，同时也对人工智能与生物学交叉方向保持关注。",
-    "我的背景覆盖算法竞赛、全栈开发与 AI 应用工程。相比单纯实现功能，我更关注研究思路与工程落地之间的连接。",
-    "近期工作主要围绕 LLM 系统中的安全与效率问题，尤其关注 RAG、GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
+    "我目前就读于西南财经大学人工智能专业，研究兴趣主要集中在 LLM 系统与 AI 系统安全，尤其关注推理、检索与系统可靠性交叉处的问题。",
+    "我的背景起点是算法竞赛，也长期参与系统实现与工程落地。这让我对那些同时要求安全性、鲁棒性与可复现实现的问题尤其感兴趣。",
+    "近期工作主要围绕 LLM 系统中的安全问题展开，尤其关注 GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
   ],
 
   news: [
     { date: "2026.01", text: "入职泰康在线前端实习，所在团队正持续推进 AI 融合方向。" },
-    { date: "2026.01", text: "完成 LogicPoison（ACL 2026 投稿）核心实验与方法迭代，聚焦 GraphRAG 攻击问题。" },
+    { date: "2026.01", text: "在 LogicPoison（ACL 2026 投稿）项目中独立完成完整实验流程，并参与方法迭代，聚焦 GraphRAG 系统攻击问题。" },
     {
       date: "2025.10",
       text: "作为学生代表在 2025 CCPC 女生赛开幕式发言，并获得银奖。",
@@ -58,7 +58,7 @@
     },
     {
       date: "2025.06",
-      text: "成为西南财经大学计算机与人工智能学院奇点工作室学生总负责人。",
+      text: "成为西南财经大学计算机与人工智能学院奇点工作室学生负责人。",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
       linkText: "✨ 学院新闻"
     }
@@ -69,11 +69,12 @@
       title: "LogicPoison：面向 GraphRAG 的逻辑攻击研究",
       meta: "共同一作 | ACL 2026 投稿",
       description:
-        "该项目研究 GraphRAG 系统中的对抗攻击问题。我负责实验流水线搭建，并在方法改进与实验设计中做出主要贡献。工作关注在文本层面保持隐蔽的同时，如何破坏推理链路。代码计划在评审结束后开源。",
+        "该项目研究 GraphRAG 系统中的对抗攻击问题。作为共同一作，我独立完成了完整实验流程，并在方法改进与实验设计中做出主要贡献。工作关注在文本层面保持隐蔽的同时，如何破坏推理链路。代码计划在评审结束后开源。",
       tags: ["GraphRAG", "安全", "LLM", "ACL 投稿"],
       links: [
-        { name: "论文", url: "#" },
-        { name: "代码", url: "https://github.com/Jord8061/logicPoison" }
+        { name: "论文", url: "https://openreview.net/forum?id=u5cSIeXVtK" },
+        { name: "代码", url: "https://github.com/Jord8061/logicPoison" },
+        { name: "数据", url: "https://huggingface.co/datasets/Jord8061/logicPoison" }
       ]
     },
     {
@@ -94,7 +95,12 @@
       meta: "人工智能 本科 | 2022.09 - 2026.06",
       image: "./assets/swufelogo.png",
       description:
-        "关注方向：大语言模型、智能体、算法、AI 应用与系统构建。"
+        "GPA: 3.4/5.0 · 平均分: 85.40/100 · 排名: 2/25\n关注方向：大语言模型、智能体、算法、AI 应用与系统构建。",
+      descriptionTip:
+        "参照{{link}}中的综合测评办法，综合测评成绩由学业成绩和综合能力加分构成，并按专业综合成绩进行排序。",
+      descriptionTipLinkText: "《西南财经大学计算机与人工智能学院推荐免试研究生工作实施细则》",
+      descriptionTipLinkUrl: "https://it.swufe.edu.cn/info/1166/1724.htm",
+      descriptionTipMarker: "i"
     },
     {
       title: "华中师范大学第一附属中学",

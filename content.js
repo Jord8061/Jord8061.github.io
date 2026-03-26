@@ -212,7 +212,31 @@ function renderEducation(items) {
     .map((item) => {
       const title = escapeHtml(item.title || "");
       const meta = escapeHtml(item.meta || "");
-      const description = escapeHtml(item.description || "");
+      const rawTipTemplate = item.descriptionTip ? String(item.descriptionTip) : "";
+      const tipMarker = escapeHtml(item.descriptionTipMarker || "i");
+      const tipLinkTextRaw = item.descriptionTipLinkText ? String(item.descriptionTipLinkText) : "";
+      const tipLinkUrlRaw = item.descriptionTipLinkUrl ? String(item.descriptionTipLinkUrl).trim() : "";
+      const tipLinkText = escapeHtml(tipLinkTextRaw);
+      const safeTipLinkUrl = /^https?:\/\//i.test(tipLinkUrlRaw) ? escapeHtml(tipLinkUrlRaw) : "";
+      const tipLinkHtml =
+        tipLinkText && safeTipLinkUrl
+          ? `<a class="edu-tip-link" href="${safeTipLinkUrl}" target="_blank" rel="noopener noreferrer">${tipLinkText}</a>`
+          : "";
+      const tipAriaText = escapeHtml(rawTipTemplate.replace("{{link}}", tipLinkTextRaw).replace(/\s+/g, " ").trim());
+      const tipBodyHtml = rawTipTemplate
+        ? escapeHtml(rawTipTemplate).replace("{{link}}", tipLinkHtml || tipLinkText || "")
+        : "";
+      const tipHtml = tipBodyHtml
+        ? `<span class="edu-inline-tip" tabindex="0" role="note" aria-label="${tipAriaText}">${tipMarker}<span class="edu-inline-tip-bubble">${tipBodyHtml}</span></span>`
+        : "";
+      let description = escapeHtml(item.description || "").replace(/\r?\n/g, "<br>");
+      if (tipHtml) {
+        const firstBreakIndex = description.indexOf("<br>");
+        description =
+          firstBreakIndex >= 0
+            ? `${description.slice(0, firstBreakIndex)}${tipHtml}${description.slice(firstBreakIndex)}`
+            : `${description}${tipHtml}`;
+      }
       const imageSrc = item.image ? encodeURI(item.image) : "";
       const imageAlt = escapeHtml(item.logoAlt || `${item.title || "Education"} logo`);
       const logoHtml = imageSrc
@@ -446,7 +470,9 @@ function renderPage(data) {
   setText("tagline", data.profile.tagline);
 
   const pageTitle = data.ui?.pageTitle || "Academic Homepage";
-  document.title = `${data.profile.nameCn} | ${pageTitle}`;
+  const rawTitleName = String(data.profile.nameCn || "").trim();
+  const titleName = rawTitleName.split(/[|｜]/)[0].trim() || rawTitleName;
+  document.title = titleName ? `${titleName} | ${pageTitle}` : pageTitle;
 
   renderLinks(data.profile.links || []);
   renderAbout(data.about || []);
@@ -711,6 +737,14 @@ window.addEventListener("click", (event) => {
   const clickedToggle = navToggle ? navToggle.contains(target) : false;
   const clickedMenu = overflowMenu ? overflowMenu.contains(target) : false;
   if (!clickedToggle && !clickedMenu) closeMobileNav();
+});
+
+document.addEventListener("click", (event) => {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const disabledProjectLink = target.closest("a.project-link-disabled");
+  if (!disabledProjectLink) return;
+  event.preventDefault();
 });
 
 window.addEventListener("scroll", syncNavVisualState, { passive: true });

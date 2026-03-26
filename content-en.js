@@ -32,7 +32,7 @@
     nameCn: "Jin Chen | 陈瑾",
     college: "B.Eng. in AI · SWUFE",
     tagline:
-      "Interested in LLMs, agents, algorithms, and AI for Biology",
+      "From competitive programming to LLM systems and AI security",
     links: [
       { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
@@ -42,14 +42,14 @@
   },
 
   about: [
-    "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My research interests include large language models, intelligent agents, and LLM-based systems, with an emerging interest in AI for biology.",
-    "My background spans competitive programming, full-stack development, and AI application engineering. I enjoy connecting research ideas with solid implementation, especially in scenarios where system design, reasoning ability, and engineering reliability all matter.",
-    "My recent work focuses on security and efficiency issues in LLM-based systems, particularly in RAG, GraphRAG, and agent memory settings. I pursue this line of research through ongoing collaboration with DEEP Lab."
+    "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My research interests lie in LLM-based systems and AI systems security, especially at the intersection of reasoning, retrieval, and system reliability.",
+    "My background spans competitive programming and system-oriented engineering, which shaped my interest in building research ideas into solid, reproducible systems. I am particularly drawn to problems where security, robustness, and implementation all matter.",
+    "Recently, my work has focused on security issues in LLM-based systems, especially in GraphRAG and agent memory settings. I am currently pursuing this line of research through ongoing collaboration with DEEP Lab."
   ],
 
   news: [
     { date: "2026.01", text: "Started my front-end internship at Tk.cn Insurance CO.,LTD., in a team actively moving toward AI integration." },
-    { date: "2026.01", text: "Completed major experimental work and method refinement for LogicPoison, our ACL 2026 submission on attacks against GraphRAG systems." },
+    { date: "2026.01", text: "Independently carried out the full experimental pipeline for LogicPoison, our ACL 2026 submission on attacks against GraphRAG systems, while also contributing to method refinement." },
     {
       date: "2025.10",
       text: "Delivered a speech as the student representative at the opening ceremony of the 2025 CCPC Girls Contest and won the Silver Medal.",
@@ -58,7 +58,7 @@
     },
     {
       date: "2025.06",
-      text: "Became the Student General Head of Singularity Lab, School of Computing and Artificial Intelligence, SWUFE.",
+      text: "Became the Student Head of Singularity Lab, School of Computing and Artificial Intelligence, SWUFE.",
       url: "https://it.swufe.edu.cn/info/1166/19548.htm",
       linkText: "✨ Official News"
     }
@@ -69,11 +69,12 @@
       title: "LogicPoison: Logical Attacks on Graph Retrieval-Augmented Generation",
       meta: "Co-first Author | ACL 2026 submission",
       description:
-        "A research project on adversarial attacks against GraphRAG systems. As a co-first author, I was responsible for the full experimental pipeline and made major contributions to method refinement and experimental design. The work studies how logical corruption can compromise GraphRAG reasoning while remaining stealthy at the text level. Code will be released after the review decision.",
+        "A research project on adversarial attacks against GraphRAG systems. As a co-first author, I independently carried out the full experimental pipeline and contributed substantially to method refinement and experimental design. The work studies how logical corruption can compromise GraphRAG reasoning while remaining stealthy at the text level. Code will be released after the review decision.",
       tags: ["GraphRAG", "Security", "LLM", "ACL Submission"],
       links: [
-        { name: "Paper", url: "#" },
-        { name: "Code", url: "https://github.com/Jord8061/logicPoison" }
+        { name: "Paper", url: "https://openreview.net/forum?id=u5cSIeXVtK" },
+        { name: "Code", url: "https://github.com/Jord8061/logicPoison" },
+        { name: "Data", url: "https://huggingface.co/datasets/Jord8061/logicPoison" }
       ]
     },
     {
@@ -94,7 +95,7 @@
       meta: "B.Eng. in Artificial Intelligence | 2022.09 - 2026.06",
       image: "./assets/swufelogo.png",
       description:
-        "Relevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building."
+        "GPA: 3.4/5.0 · Average Score: 85.40/100 · Ranking: 2/25\nRelevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building."
     },
     {
       title: "The No.1 Middle School Affiliated To Central China Normal University",
