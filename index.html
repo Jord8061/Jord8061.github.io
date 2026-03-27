@@ -5,14 +5,30 @@
   <title>Academic Homepage</title>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="./assets/avatar-256.jpg" />
+  <link
+    rel="preload"
+    as="image"
+    href="./assets/avatar-512.jpg"
+    imagesrcset="./assets/avatar-256.jpg 256w, ./assets/avatar-512.jpg 512w"
+    imagesizes="256px"
+  />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="#">
-        <img id="nav-avatar" class="brand-avatar" src="./assets/nav-64.jpg" alt="Avatar" width="32" height="32" loading="eager" decoding="async" />
+        <span class="brand-avatar-wrap">
+          <img id="nav-avatar" class="brand-avatar" src="./assets/album-64.jpg" alt="Avatar" width="32" height="32" loading="eager" decoding="async" />
+          <button
+            id="brand-music-toggle"
+            class="brand-music-toggle"
+            type="button"
+            aria-label="Play music"
+            aria-pressed="false"
+            title="Play music"
+          ></button>
+        </span>
         <span id="nav-name">Your Name</span>
       </a>
 
@@ -102,9 +118,18 @@
     <img class="lightbox-image" id="lightbox-image" src="" alt="" decoding="async" />
   </div>
 
+  <audio
+    id="brand-music-audio"
+    preload="none"
+    playsinline
+    loop
+    src="https://music.163.com/song/media/outer/url?id=2155422574.mp3"
+  ></audio>
+
   <script src="./content-en.js"></script>
   <script src="./content-zh.js"></script>
 
   <script src="./content.js"></script>
 </body>
 </html>
+

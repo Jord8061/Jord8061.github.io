@@ -27,8 +27,8 @@
 
   profile: {
     avatar: "./assets/avatar-512.jpg",
-    navAvatar: "./assets/nav-64.jpg",
-    navName: "Good day, everyone",
+    navAvatar: "./assets/album-64.jpg",
+    navName: "Welcome to my world ♪",
     nameCn: "Jin Chen | 陈瑾",
     college: "B.Eng. in AI · SWUFE",
     tagline:
@@ -145,12 +145,12 @@
       description: "🥉 Bronze Medal | 2025.10",
       images: [
         {
-          image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+          image: "./assets/full/ICPC Asia Xi'an Regional Contest_01-full.jpg",
           thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg",
           alt: "ICPC Asia Xi'an Regional Contest bronze medal certificate"
         },
         {
-          image: "./assets/ICPC西安铜奖.png",
+          image: "./assets/full/ICPC西安铜奖-full.jpg",
           thumb: "./assets/thumbs/ICPC西安铜奖-thumb.jpg",
           alt: "ICPC Xi'an Regional Contest bronze medal photo"
         }
@@ -167,7 +167,7 @@
           alt: "CCPC Girls Contest silver medal certificate"
         },
         {
-          image: "./assets/CCPC女生赛银奖.png",
+          image: "./assets/full/CCPC女生赛银奖-full.jpg",
           thumb: "./assets/thumbs/CCPC女生赛银奖-thumb.jpg",
           alt: "CCPC Girls Contest silver medal photo"
         }
@@ -177,21 +177,21 @@
       title: "The 20th Citi Cup Financial Innovation Application Competition",
       date: "2025.06",
       description: "National Third Prize | 2025.06",
-      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png",
+      image: "./assets/full/Citi Cup Financial Innovation Application Competition_01-full.jpg",
       thumb: "./assets/thumbs/Citi Cup Financial Innovation Application Competition_01-thumb.jpg"
     },
     {
       title: "National College Mathematical Contest in Modeling",
       date: "2024.09",
       description: "Sichuan First Prize | 2024.09",
-      image: "./assets/Mathematical Contest in Modeling.png",
+      image: "./assets/full/Mathematical Contest in Modeling-full.jpg",
       thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
       title: "SWUFE Merit Student, 2023-2024 Academic Year",
       date: "2024.09",
       description: "Merit Student | 2024.09",
-      image: "./assets/三好学生202409.jpg",
+      image: "./assets/full/三好学生202409-full.jpg",
       thumb: "./assets/thumbs/三好学生202409-thumb.jpg",
       alt: "Merit student honor certificate"
     },
@@ -218,12 +218,12 @@
       description: "🥇 Gold Medal | 2024.05",
       images: [
         {
-          image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+          image: "./assets/full/CCPC Guangxi Collegiate Programming Contest-full.jpg",
           thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg",
           alt: "CCPC Guangxi Collegiate Programming Contest certificate"
         },
         {
-          image: "./assets/中国-东盟国际大学生程序设计大赛.png",
+          image: "./assets/full/中国-东盟国际大学生程序设计大赛-full.jpg",
           thumb: "./assets/thumbs/中国-东盟国际大学生程序设计大赛-thumb.jpg",
           alt: "China-ASEAN International Collegiate Programming Contest photo"
         }
@@ -241,19 +241,21 @@
       title: "Chinese Collegiate Computing Contest (GPLT)",
       date: "2024.04",
       description: "National Individual Third Prize | 2024.04",
-      image: "./assets/Chinese Collegiate Computing Contest GPLT.png",
+      image: "./assets/full/Chinese Collegiate Computing Contest GPLT-full.jpg",
       thumb: "./assets/thumbs/Chinese Collegiate Computing Contest GPLT-thumb.jpg"
     },
     {
       title: "Lanqiao Cup (Python A Group)",
       date: "2024.04",
       description: "Sichuan First Prize | 2024.04",
-      image: "./assets/Lanqiao Cup (Python A Group).jpg",
+      image: "./assets/full/Lanqiao Cup (Python A Group)-full.jpg",
       thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
   ],
 
   footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
 };
+
+
 
 

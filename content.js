@@ -55,6 +55,8 @@ function applyUIText(ui) {
   if (closeButton && ui?.lightboxCloseAriaLabel) {
     closeButton.setAttribute("aria-label", ui.lightboxCloseAriaLabel);
   }
+
+  syncBrandMusicToggleState(Boolean(brandMusicAudio && !brandMusicAudio.paused && !brandMusicAudio.ended));
 }
 
 function getIconSvg(iconType) {
@@ -528,6 +530,8 @@ const headerInner = document.querySelector(".site-header-inner");
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");
 const brandLink = document.querySelector(".brand");
+const brandMusicToggle = document.getElementById("brand-music-toggle");
+const brandMusicAudio = document.getElementById("brand-music-audio");
 const langToggle = document.getElementById("lang-toggle");
 const overflowMenu = document.getElementById("nav-overflow-menu");
 const imageLightbox = document.getElementById("image-lightbox");
@@ -544,6 +548,48 @@ const navTargets = navLinks
     return { link, section: id ? document.getElementById(id) : null };
   })
   .filter((item) => item.section);
+
+function getBrandMusicToggleLabel(isPlaying) {
+  if (currentLang === "zh") return isPlaying ? "暂停音乐" : "播放音乐";
+  return isPlaying ? "Pause music" : "Play music";
+}
+
+function syncBrandMusicToggleState(isPlaying) {
+  if (!brandMusicToggle) return;
+  const avatarWrap = brandMusicToggle.closest(".brand-avatar-wrap");
+  brandMusicToggle.classList.toggle("is-playing", isPlaying);
+  if (avatarWrap) avatarWrap.classList.toggle("is-playing", isPlaying);
+  brandMusicToggle.setAttribute("aria-pressed", String(isPlaying));
+  const label = getBrandMusicToggleLabel(isPlaying);
+  brandMusicToggle.setAttribute("aria-label", label);
+  brandMusicToggle.setAttribute("title", label);
+}
+
+function initBrandMusicPlayer() {
+  if (!brandMusicToggle || !brandMusicAudio) return;
+
+  brandMusicAudio.volume = 0.75;
+  syncBrandMusicToggleState(false);
+
+  brandMusicToggle.addEventListener("click", async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      if (brandMusicAudio.paused || brandMusicAudio.ended) {
+        await brandMusicAudio.play();
+      } else {
+        brandMusicAudio.pause();
+      }
+    } catch (error) {
+      syncBrandMusicToggleState(false);
+    }
+  });
+
+  brandMusicAudio.addEventListener("play", () => syncBrandMusicToggleState(true));
+  brandMusicAudio.addEventListener("pause", () => syncBrandMusicToggleState(false));
+  brandMusicAudio.addEventListener("ended", () => syncBrandMusicToggleState(false));
+}
 
 function closeMobileNav() {
   if (!header || !navToggle) return;
@@ -856,6 +902,8 @@ if (header && navToggle && siteNav) {
     });
   });
 }
+
+initBrandMusicPlayer();
 
 if (overflowMenu) {
   overflowMenu.addEventListener("click", (event) => {

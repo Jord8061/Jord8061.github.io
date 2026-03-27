@@ -27,8 +27,8 @@
 
   profile: {
     avatar: "./assets/avatar-512.jpg",
-    navAvatar: "./assets/nav-64.jpg",
-    navName: "日安，欢迎光临喵~",
+    navAvatar: "./assets/album-64.jpg",
+    navName: "Welcome to my world ♪",
     nameCn: "陈瑾 | Jin Chen",
     college: "西南财经大学 · 人工智能",
     tagline:
@@ -43,9 +43,9 @@
   },
 
   about: [
-    "我目前就读于西南财经大学人工智能专业，研究兴趣主要集中在 LLM 系统与 AI 系统安全，尤其关注推理、检索与系统可靠性交叉处的问题。",
+    "我目前就读于西南财经大学人工智能专业，研究兴趣主要集中在 LLM 系统与 AI 系统安全，尤其关注推理、检索与系统可靠性交叉问题。",
     "我的背景起点是算法竞赛，也长期参与系统实现与工程落地。这让我对那些同时要求安全性、鲁棒性与可复现实现的问题尤其感兴趣。",
-    "近期工作主要围绕 LLM 系统中的安全问题展开，尤其关注 GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
+    "近期工作主要围绕 LLM 系统中的安全问题展开，关注 GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
   ],
 
   news: [
@@ -82,11 +82,11 @@
       title: "自动化数据处理与大模型微调 AI-Agent 系统",
       meta: "全栈开发 | 2024.12 - 2025.06",
       description:
-        "搭建了集文档处理、数据清洗、RAG 流程接入与模型任务执行于一体的系统。我主要负责前端架构与核心模块开发，并参与后端流水线整合、实时任务监控与 Docker 部署。项目进入花旗杯全国总决赛并获全国三等奖（Top 20）。",
+        "搭建了集文档处理、数据清洗、RAG 流程接入与模型任务执行于一体的系统。主要负责前端架构与核心模块开发，并参与后端流水线整合、实时任务监控与 Docker 部署。项目进入花旗杯全国总决赛并获全国三等奖（Top 20）。",
       tags: ["Vue3", "Node.js", "FastAPI", "RAG", "AI Agent"],
-      links: [
-        { name: "代码", url: "#" }
-      ]
+      // links: [
+      //   { name: "代码", url: "#" }
+      // ]
     }
   ],
 
@@ -146,12 +146,12 @@
       description: "🥉 铜奖 | 2025.10",
       images: [
         {
-          image: "./assets/ICPC Asia Xi'an Regional Contest_01.png",
+          image: "./assets/full/ICPC Asia Xi'an Regional Contest_01-full.jpg",
           thumb: "./assets/thumbs/ICPC Asia Xi'an Regional Contest_01-thumb.jpg",
           alt: "ICPC亚洲区域赛（西安）铜奖证书"
         },
         {
-          image: "./assets/ICPC西安铜奖.png",
+          image: "./assets/full/ICPC西安铜奖-full.jpg",
           thumb: "./assets/thumbs/ICPC西安铜奖-thumb.jpg",
           alt: "ICPC西安区域赛铜奖照片"
         }
@@ -168,7 +168,7 @@
           alt: "CCPC女生专场银奖证书"
         },
         {
-          image: "./assets/CCPC女生赛银奖.png",
+          image: "./assets/full/CCPC女生赛银奖-full.jpg",
           thumb: "./assets/thumbs/CCPC女生赛银奖-thumb.jpg",
           alt: "CCPC女生赛银奖照片"
         }
@@ -178,21 +178,21 @@
       title: "第二十届“花旗杯”金融创新应用大赛",
       date: "2025.06",
       description: "全国三等奖 | 2025.06",
-      image: "./assets/Citi Cup Financial Innovation Application Competition_01.png",
+      image: "./assets/full/Citi Cup Financial Innovation Application Competition_01-full.jpg",
       thumb: "./assets/thumbs/Citi Cup Financial Innovation Application Competition_01-thumb.jpg"
     },
     {
       title: "全国大学生数学建模竞赛",
       date: "2024.09",
       description: "四川省一等奖 | 2024.09",
-      image: "./assets/Mathematical Contest in Modeling.png",
+      image: "./assets/full/Mathematical Contest in Modeling-full.jpg",
       thumb: "./assets/thumbs/Mathematical Contest in Modeling-thumb.jpg"
     },
     {
       title: "2023-2024学年西南财经大学“三好学生”",
       date: "2024.09",
       description: "三好学生 | 2024.09",
-      image: "./assets/三好学生202409.jpg",
+      image: "./assets/full/三好学生202409-full.jpg",
       thumb: "./assets/thumbs/三好学生202409-thumb.jpg",
       alt: "三好学生荣誉证书"
     },
@@ -219,12 +219,12 @@
       description: "🥇 金奖 | 2024.05",
       images: [
         {
-          image: "./assets/CCPC Guangxi Collegiate Programming Contest.jpg",
+          image: "./assets/full/CCPC Guangxi Collegiate Programming Contest-full.jpg",
           thumb: "./assets/thumbs/CCPC Guangxi Collegiate Programming Contest-thumb.jpg",
           alt: "中国大学生程序设计竞赛广西省赛获奖证书"
         },
         {
-          image: "./assets/中国-东盟国际大学生程序设计大赛.png",
+          image: "./assets/full/中国-东盟国际大学生程序设计大赛-full.jpg",
           thumb: "./assets/thumbs/中国-东盟国际大学生程序设计大赛-thumb.jpg",
           alt: "中国-东盟国际大学生程序设计大赛照片"
         }
@@ -242,19 +242,21 @@
       title: "CCCC-GPLT团体程序设计天梯赛",
       date: "2024.04",
       description: "全国个人三等奖 | 2024.04",
-      image: "./assets/Chinese Collegiate Computing Contest GPLT.png",
+      image: "./assets/full/Chinese Collegiate Computing Contest GPLT-full.jpg",
       thumb: "./assets/thumbs/Chinese Collegiate Computing Contest GPLT-thumb.jpg"
     },
     {
       title: "蓝桥杯Python程序设计大学A组",
       date: "2024.04",
       description: "四川省一等奖 | 2024.04",
-      image: "./assets/Lanqiao Cup (Python A Group).jpg",
+      image: "./assets/full/Lanqiao Cup (Python A Group)-full.jpg",
       thumb: "./assets/thumbs/Lanqiao Cup (Python A Group)-thumb.jpg"
     }
   ],
 
   footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
 };
+
+
 
 
