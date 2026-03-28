@@ -84,9 +84,9 @@
       description:
         "Built an end-to-end system for automated document processing, data cleaning, RAG workflow integration, and model-related task execution. I was mainly responsible for the front-end architecture and core module development, while also participating in backend pipeline integration, real-time task monitoring, and Docker-based deployment. The project reached the national finals of the Citi Cup and won a National Third Prize (Top 20).",
       tags: ["Vue3", "Node.js", "FastAPI", "RAG", "AI Agent"],
-      links: [
-        { name: "Code", url: "#" }
-      ]
+      // links: [
+      //   { name: "Code", url: "#" }
+      // ]
     }
   ],
 
@@ -96,7 +96,7 @@
       meta: "B.Eng. in Artificial Intelligence | 2022.09 - 2026.06",
       image: "./assets/swufelogo.png",
       description:
-        "GPA: 3.4/5.0 · Average Score: 85.40/100 · Ranking: 2/25\nRelevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building.",
+        "GPA: 3.4/5.0 · Average Score: 85.40/100 · Ranking: 2/26\nRelevant interests: LLMs, intelligent agents, algorithms, AI applications, and system building.",
       descriptionTip:
         "According to the comprehensive evaluation method in {{link}}, the final score is composed of academic performance and bonus points for comprehensive abilities, and is ranked within the major.",
       descriptionTipLinkText: "SWUFE SCAI Implementation Rules for Recommended Admission to Graduate Study",
