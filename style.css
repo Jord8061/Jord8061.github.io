@@ -816,6 +816,53 @@ html[lang^="en"] .main li {
   border-top: 1px solid #f1f5f9;
 }
 
+.item.item-with-figure {
+  padding: 14px 0;
+}
+
+.item-content {
+  min-width: 0;
+}
+
+.publication-figure-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 8px 0 10px;
+}
+
+.publication-figure-trigger {
+  width: min(100%, 640px);
+  max-width: 100%;
+  display: block;
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.publication-figure-trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.35);
+}
+
+.publication-figure {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  object-fit: contain;
+  background: #f8fafc;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.publication-figure-trigger:hover .publication-figure {
+  border-color: #dbe7f3;
+  box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.6);
+  transform: translateY(-1px);
+}
+
 .item:first-child {
   border-top: none;
   padding-top: 0;
@@ -1012,46 +1059,21 @@ html[lang^="en"] .main li {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  min-height: 26px;
-  padding: 0 9px;
-  border-radius: 999px;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #334155;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1;
+  min-height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  line-height: 0;
   text-decoration: none;
-  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease,
-    transform 0.16s ease;
+  transition: transform 0.16s ease, opacity 0.16s ease, filter 0.16s ease;
 }
 
-.project-link-icon {
-  width: 13px;
-  height: 13px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-link-icon svg {
-  width: 13px;
-  height: 13px;
-  display: block;
-  fill: currentColor;
-}
-
-.project-link-icon-emoji {
+.project-link-badge {
+  height: 20px;
   width: auto;
-  height: auto;
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.project-link-label {
-  display: inline-block;
+  display: block;
+  border-radius: 3px;
 }
 
 .project-link:hover {
@@ -1059,80 +1081,15 @@ html[lang^="en"] .main li {
   transform: translateY(-1px);
 }
 
-.project-link-arxiv {
-  color: #b91c1c;
-  border-color: #fecaca;
-  background: #fff1f2;
-}
-
-.project-link-arxiv:hover {
-  color: #991b1b;
-  border-color: #fda4af;
-  background: #ffe4e6;
-}
-
-.project-link-github {
-  color: #111827;
-  border-color: #d1d5db;
-  background: #f8fafc;
-}
-
-.project-link-github:hover {
-  color: #030712;
-  border-color: #9ca3af;
-  background: #f1f5f9;
-}
-
-.project-link-openreview {
-  color: #be123c;
-  border-color: #fda4af;
-  background: #fff1f2;
-}
-
-.project-link-openreview:hover {
-  color: #9f1239;
-  border-color: #fb7185;
-  background: #ffe4e6;
-}
-
-.project-link-huggingface {
-  color: #92400e;
-  border-color: #fde68a;
-  background: #fffbeb;
-}
-
-.project-link-huggingface:hover {
-  color: #78350f;
-  border-color: #fcd34d;
-  background: #fef3c7;
-}
-
-.project-link-paper,
-.project-link-code,
-.project-link-default {
-  color: #6d28d9;
-  border-color: #e9d5ff;
-  background: #faf5ff;
-}
-
-.project-link-paper:hover,
-.project-link-code:hover,
-.project-link-default:hover {
-  color: #5b21b6;
-  border-color: #d8b4fe;
-  background: #f5f3ff;
-}
-
 .project-link-disabled,
 .project-link-disabled:hover,
 .project-link-disabled:focus-visible {
-  color: #94a3b8;
-  border-color: #e2e8f0;
-  background: #f8fafc;
   text-decoration: none;
   transform: none;
   box-shadow: none;
   cursor: not-allowed;
+  opacity: 0.56;
+  filter: grayscale(0.3);
 }
 
 .footer {
@@ -1152,6 +1109,7 @@ html[lang^="en"] .main li {
   .sidebar {
     position: static;
   }
+
 }
 
 @media (max-width: 640px) {
@@ -1212,6 +1170,10 @@ html[lang^="en"] .main li {
 
   .award-title {
     font-size: 0.93rem;
+  }
+
+  .publication-figure {
+    max-width: 100%;
   }
 
   .award-desc {

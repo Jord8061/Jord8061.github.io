@@ -7,7 +7,7 @@
     nav: {
       about: "关于",
       news: "动态",
-      projects: "项目",
+      projects: "论文",
       education: "教育",
       experience: "经历",
       awards: "奖项"
@@ -15,7 +15,7 @@
     sectionHeadings: {
       about: "🐾 关于我",
       news: "🎉 最新动态",
-      projects: "🎯 代表项目",
+      projects: "📄 论文发表",
       education: "🎓 教育背景",
       experience: "👜 个人经历",
       awards: "🏆 荣誉奖项"
@@ -49,8 +49,8 @@
   ],
 
   news: [
+    { date: "2026.04", text: "LogicPoison 论文被 ACL 2026 Main Conference 录用（共同一作）。" },
     { date: "2026.01", text: "入职泰康在线前端实习，所在团队正持续推进 AI 融合方向。" },
-    { date: "2026.01", text: "在 LogicPoison（ACL 2026 投稿）项目中独立完成完整实验流程，并参与方法迭代，聚焦 GraphRAG 系统攻击问题。" },
     {
       date: "2025.10",
       text: "作为学生代表在 2025 CCPC 女生赛开幕式发言，并获得银奖。",
@@ -68,25 +68,17 @@
   projects: [
     {
       title: "LogicPoison：面向 GraphRAG 的逻辑攻击研究",
-      meta: "共同一作 | ACL 2026 投稿",
+      meta: "共同一作 | ACL 2026 主会论文",
+      image: "./assets/main_figure.png",
+      imageAlt: "LogicPoison 论文主图",
       description:
-        "该项目研究 GraphRAG 系统中的对抗攻击问题。作为共同一作，我独立完成了完整实验流程，并在方法改进与实验设计中做出主要贡献。工作关注在文本层面保持隐蔽的同时，如何破坏推理链路。代码计划在评审结束后开源。",
-      tags: ["GraphRAG", "安全", "LLM", "ACL 投稿"],
+        "该论文研究 GraphRAG 系统中的对抗攻击问题。作为共同一作，我独立完成了完整实验流程，并在方法改进与实验设计中做出主要贡献。工作已被 ACL 2026 Main Conference 录用，论文、代码与数据均已公开。",
+      tags: ["GraphRAG", "安全", "LLM", "ACL 2026 Main"],
       links: [
-        { name: "论文", url: "https://openreview.net/forum?id=u5cSIeXVtK" },
-        { name: "代码", url: "https://github.com/Jord8061/logicPoison" },
-        { name: "数据", url: "https://huggingface.co/datasets/Jord8061/logicPoison" }
+        { name: "论文", url: "https://arxiv.org/abs/2604.02954" },
+        { name: "数据", url: "https://huggingface.co/datasets/Jord8061/datasets" },
+        { name: "代码", url: "https://github.com/Jord8061/logicPoison" }
       ]
-    },
-    {
-      title: "自动化数据处理与大模型微调 AI-Agent 系统",
-      meta: "全栈开发 | 2024.12 - 2025.06",
-      description:
-        "搭建了集文档处理、数据清洗、RAG 流程接入与模型任务执行于一体的系统。主要负责前端架构与核心模块开发，并参与后端流水线整合、实时任务监控与 Docker 部署。项目进入花旗杯全国总决赛并获全国三等奖（Top 20）。",
-      tags: ["Vue3", "Node.js", "FastAPI", "RAG", "AI Agent"],
-      // links: [
-      //   { name: "代码", url: "#" }
-      // ]
     }
   ],
 
@@ -115,7 +107,7 @@
   experience: [
     {
       title: "泰康在线财产保险股份有限公司",
-      meta: "前端开发实习生 | 2026.01 - 至今",
+      meta: "前端开发实习生 | 2026.01 - 2026.04",
       description:
         "目前在泰康在线从事前端开发，团队正积极探索 AI 融合场景。基于 AI 与工程复合背景，在前端工作的基础上，进一步参与 AI 系统建设与协作。"
     },
@@ -254,9 +246,5 @@
     }
   ],
 
-  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
+  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.04."
 };
-
-
-
-

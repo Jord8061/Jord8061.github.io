@@ -136,23 +136,26 @@ function inferProjectLinkType(link) {
   return "default";
 }
 
-function getProjectLinkIconSvg(linkType) {
+function getProjectLinkBadgeSpec(linkType, linkName, isPlaceholder) {
+  if (isPlaceholder) {
+    return { left: linkName || "Link", right: "TBD", color: "cbd5e1", logo: "" };
+  }
+
   switch (linkType) {
     case "arxiv":
-      return `
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M3.8 18.5 9.2 5.7h2.1l5.5 12.8h-2.4l-1.3-3.1H7.4l-1.3 3.1H3.8zm4.4-5.1h4.1L10.2 8z"></path>
-          <path d="M16.4 7.2h3.8v1.9h-3.8zM16.4 10.8h3.8v1.9h-3.8z"></path>
-        </svg>
-      `;
-    case "github":
-      return getIconSvg("github");
+      return { left: "Paper", right: "Arxiv", color: "b31b1b", logo: "arxiv" };
     case "openreview":
-      return getIconSvg("openreview");
+      return { left: "Paper", right: "OpenReview", color: "e11d48", logo: "openreview" };
+    case "github":
+      return { left: "GitHub", right: "Project", color: "181717", logo: "github" };
     case "huggingface":
-      return getIconSvg("huggingface");
+      return { left: "HuggingFace", right: "Data", color: "f59e0b", logo: "huggingface" };
+    case "paper":
+      return { left: "Paper", right: linkName || "PDF", color: "b31b1b", logo: "arxiv" };
+    case "code":
+      return { left: "Code", right: linkName || "Repo", color: "181717", logo: "github" };
     default:
-      return "";
+      return { left: linkName || "Link", right: "Open", color: "64748b", logo: "" };
   }
 }
 
@@ -200,6 +203,21 @@ function renderCardItems(items, targetId) {
 
   container.innerHTML = items
     .map((item) => {
+      const hasProjectFigure = isProjectSection && item.image;
+      const cardClass = hasProjectFigure ? "item item-with-figure" : "item";
+      const rawFigureAlt = item.imageAlt || item.title || "Publication figure";
+      const figureAlt = escapeHtml(rawFigureAlt);
+      const figureSrc = item.image ? encodeURI(item.image) : "";
+      const figureAriaLabel = escapeHtml(
+        `${currentData?.ui?.lightboxOpenPrefix || "View full image: "}${rawFigureAlt}`
+      );
+      const figureHtml = hasProjectFigure
+        ? `<div class="publication-figure-wrap">
+            <button class="publication-figure-trigger" type="button" data-fullsrc="${figureSrc}" data-alt="${figureAlt}" aria-label="${figureAriaLabel}">
+              <img class="publication-figure" src="${figureSrc}" alt="${figureAlt}" loading="lazy" decoding="async" />
+            </button>
+          </div>`
+        : "";
       const tagsHtml = item.tags
         ? `<div class="badges">${item.tags.map((tag) => `<span class="badge">${escapeHtml(tag)}</span>`).join("")}</div>`
         : "";
@@ -209,20 +227,22 @@ function renderCardItems(items, targetId) {
             ? `<div class="project-links">${item.links
                 .map((link) => {
                   const linkType = inferProjectLinkType(link);
-                  const iconSvg = getProjectLinkIconSvg(linkType);
-                  const iconHtml = linkType === "huggingface"
-                    ? `<span class="project-link-icon project-link-icon-emoji" aria-hidden="true">🤗</span>`
-                    : (iconSvg ? `<span class="project-link-icon" aria-hidden="true">${iconSvg}</span>` : "");
                   const rawUrl = (link.url || "").trim();
                   const isPlaceholder = rawUrl === "" || rawUrl === "#";
                   const safeUrl = escapeHtml(isPlaceholder ? "#" : rawUrl);
-                  const safeName = escapeHtml(link.name || "Link");
+                  const rawName = (link.name || "Link").trim() || "Link";
                   const externalAttrs = !isPlaceholder && /^https?:\/\//i.test(rawUrl)
                     ? ` target="_blank" rel="noopener noreferrer"`
                     : "";
                   const disabledAttrs = isPlaceholder ? ` aria-disabled="true" tabindex="-1"` : "";
                   const disabledClass = isPlaceholder ? " project-link-disabled" : "";
-                  return `<a class="project-link project-link-${linkType}${disabledClass}" href="${safeUrl}"${externalAttrs}${disabledAttrs}>${iconHtml}<span class="project-link-label">${safeName}</span></a>`;
+                  const badge = getProjectLinkBadgeSpec(linkType, rawName, isPlaceholder);
+                  const badgeUrl = `https://img.shields.io/badge/${encodeURIComponent(badge.left)}-${encodeURIComponent(badge.right)}-${badge.color}?style=flat-square${badge.logo ? `&logo=${encodeURIComponent(badge.logo)}` : ""}`;
+                  const safeBadgeUrl = escapeHtml(badgeUrl);
+                  const safeBadgeAlt = escapeHtml(`${badge.left} ${badge.right}`);
+                  return `<a class="project-link project-link-${linkType}${disabledClass}" href="${safeUrl}"${externalAttrs}${disabledAttrs}>
+                    <img class="project-link-badge" src="${safeBadgeUrl}" alt="${safeBadgeAlt}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  </a>`;
                 })
                 .join("")}</div>`
             : `<p>${item.links
@@ -231,16 +251,33 @@ function renderCardItems(items, targetId) {
         : "";
 
       return `
-        <div class="item">
-          <h3>${escapeHtml(item.title)}</h3>
-          <div class="item-meta">${escapeHtml(item.meta)}</div>
-          <p class="muted">${escapeHtml(item.description)}</p>
-          ${tagsHtml}
-          ${linksHtml}
+        <div class="${cardClass}">
+          <div class="item-content">
+            <h3>${escapeHtml(item.title)}</h3>
+            <div class="item-meta">${escapeHtml(item.meta)}</div>
+            ${figureHtml}
+            <p class="muted">${escapeHtml(item.description)}</p>
+            ${tagsHtml}
+            ${linksHtml}
+          </div>
         </div>
       `;
     })
     .join("");
+
+  if (isProjectSection && !container.dataset.figureLightboxBound) {
+    container.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const trigger = target.closest(".publication-figure-trigger");
+      if (!trigger) return;
+      const fullSrc = trigger.getAttribute("data-fullsrc");
+      const fullAlt = trigger.getAttribute("data-alt") || "Publication figure";
+      if (!fullSrc) return;
+      openImageLightbox(fullSrc, fullAlt);
+    });
+    container.dataset.figureLightboxBound = "true";
+  }
 }
 
 function renderEducation(items) {

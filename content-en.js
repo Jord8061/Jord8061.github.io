@@ -7,7 +7,7 @@
     nav: {
       about: "About",
       news: "News",
-      projects: "Projects",
+      projects: "Publications",
       education: "Education",
       experience: "Experience",
       awards: "Awards"
@@ -15,7 +15,7 @@
     sectionHeadings: {
       about: "🐾 About Me",
       news: "🎉 News",
-      projects: "🎯 Selected Projects",
+      projects: "📄 Publications",
       education: "🎓 Education",
       experience: "👜 Experience",
       awards: "🏆 Honors & Awards"
@@ -49,8 +49,8 @@
   ],
 
   news: [
+    { date: "2026.04", text: "LogicPoison was accepted to ACL 2026 Main Conference (co-first author)." },
     { date: "2026.01", text: "Started my front-end internship at Tk.cn Insurance CO.,LTD., in a team actively moving toward AI integration." },
-    { date: "2026.01", text: "Independently carried out the full experimental pipeline for LogicPoison, our ACL 2026 submission on attacks against GraphRAG systems, while also contributing to method refinement." },
     {
       date: "2025.10",
       text: "Delivered a speech as the student representative at the opening ceremony of the 2025 CCPC Girls Contest and won the Silver Medal.",
@@ -68,25 +68,17 @@
   projects: [
     {
       title: "LogicPoison: Logical Attacks on Graph Retrieval-Augmented Generation",
-      meta: "Co-first Author | ACL 2026 submission",
+      meta: "Co-first Author | ACL 2026 Main Conference",
+      image: "./assets/main_figure.png",
+      imageAlt: "Main figure of LogicPoison",
       description:
-        "A research project on adversarial attacks against GraphRAG systems. As a co-first author, I independently carried out the full experimental pipeline and contributed substantially to method refinement and experimental design. The work studies how logical corruption can compromise GraphRAG reasoning while remaining stealthy at the text level. Code will be released after the review decision.",
-      tags: ["GraphRAG", "Security", "LLM", "ACL Submission"],
+        "Our paper studies adversarial attacks against GraphRAG systems. As a co-first author, I independently carried out the full experimental pipeline and contributed substantially to method refinement and experimental design. The work has been accepted to ACL 2026 Main Conference, and the paper, code, and data are publicly available.",
+      tags: ["GraphRAG", "Security", "LLM", "ACL 2026 Main"],
       links: [
-        { name: "Paper", url: "https://openreview.net/forum?id=u5cSIeXVtK" },
-        { name: "Code", url: "https://github.com/Jord8061/logicPoison" },
-        { name: "Data", url: "https://huggingface.co/datasets/Jord8061/logicPoison" }
+        { name: "Paper", url: "https://arxiv.org/abs/2604.02954" },
+        { name: "Data", url: "https://huggingface.co/datasets/Jord8061/datasets" },
+        { name: "Code", url: "https://github.com/Jord8061/logicPoison" }
       ]
-    },
-    {
-      title: "AI-Agent System for Automated Data Processing and LLM Fine-tuning",
-      meta: "Full-stack Developer | 2024.12 - 2025.06",
-      description:
-        "Built an end-to-end system for automated document processing, data cleaning, RAG workflow integration, and model-related task execution. I was mainly responsible for the front-end architecture and core module development, while also participating in backend pipeline integration, real-time task monitoring, and Docker-based deployment. The project reached the national finals of the Citi Cup and won a National Third Prize (Top 20).",
-      tags: ["Vue3", "Node.js", "FastAPI", "RAG", "AI Agent"],
-      // links: [
-      //   { name: "Code", url: "#" }
-      // ]
     }
   ],
 
@@ -114,7 +106,7 @@
   experience: [
     {
       title: "Tk.cn Insurance CO.,LTD.",
-      meta: "Front-end Development Intern | 2026.01 - Present",
+      meta: "Front-end Development Intern | 2026.01 - 2026.04",
       description:
         "I am currently a front-end development intern at Taikang Online, where my team is actively exploring AI integration. Given my background in both AI and engineering, I am interested in contributing not only to current front-end development, but also to future AI-related system building and collaboration."
     },
@@ -253,7 +245,7 @@
     }
   ],
 
-  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.03."
+  footer: "© 2026 Jord. All rights reserved. Last updated: 2026.04."
 };
 
 
