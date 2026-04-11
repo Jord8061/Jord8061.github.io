@@ -49,7 +49,12 @@
   ],
 
   news: [
-    { date: "2026.04", text: "LogicPoison 论文被 ACL 2026 Main Conference 录用（共同一作）。" },
+    { 
+      date: "2026.04", 
+      text: "LogicPoison 论文被 ACL 2026 Main Conference 录用（共同一作）。", 
+      url: "https://it.swufe.edu.cn/info/1167/21488.htm",
+      linkText: "✨ 学院新闻"
+    },
     { date: "2026.01", text: "入职泰康在线前端实习，所在团队正持续推进 AI 融合方向。" },
     {
       date: "2025.10",

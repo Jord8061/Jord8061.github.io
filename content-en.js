@@ -49,7 +49,12 @@
   ],
 
   news: [
-    { date: "2026.04", text: "LogicPoison was accepted to ACL 2026 Main Conference (co-first author)." },
+    { 
+      date: "2026.04", 
+      text: "LogicPoison was accepted to ACL 2026 Main Conference (co-first author).",
+      url: "https://it.swufe.edu.cn/info/1167/21488.htm",
+      linkText: "✨ Official News"
+    },
     { date: "2026.01", text: "Started my front-end internship at Tk.cn Insurance CO.,LTD., in a team actively moving toward AI integration." },
     {
       date: "2025.10",
