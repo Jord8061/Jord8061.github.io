@@ -35,23 +35,22 @@
       "从算法竞赛到大语言模型系统与AI安全",
     links: [
       { name: "邮箱", url: "mailto:Jord8061@foxmail.com", icon: "email" },
+      { name: "CV", url: "./assets/CHEN_Jin_CV.pdf", icon: "cv" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
-      { name: "CSDN", url: "https://blog.csdn.net/2201_76033853", icon: "csdn" },
-      { name: "OpenReview", url: "https://openreview.net/profile?id=%7EJin_Chen12", icon: "openreview" },
-      // { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
+      { name: "谷歌学术", url: "https://scholar.google.com/citations?user=8yJ3MZEAAAAJ", icon: "scholar" }
     ]
   },
 
   about: [
     "我目前就读于西南财经大学人工智能专业，研究兴趣主要集中在 LLM 系统与 AI 系统安全，尤其关注推理、检索与系统可靠性交叉问题。",
     "我的背景起点是算法竞赛，也长期参与系统实现与工程落地。这让我对那些同时要求安全性、鲁棒性与可复现实现的问题尤其感兴趣。",
-    "近期工作主要围绕 LLM 系统中的安全问题展开，关注 GraphRAG 与 Agent Memory 场景，并与香港理工大学 DEEP Lab 持续合作。"
+    "近期工作主要围绕 LLM 系统中的安全问题展开，关注 GraphRAG 与 Agent Memory 场景，并与香港理工大学 X Lab 持续合作。"
   ],
 
   news: [
     { 
       date: "2026.04", 
-      text: "LogicPoison 论文被 ACL 2026 Main Conference 录用（共同一作）。", 
+      text: "LogicPoison 论文（共一）被 ACL 2026 主会 录用。", 
       url: "https://it.swufe.edu.cn/info/1167/21488.htm",
       linkText: "✨ 学院新闻"
     },

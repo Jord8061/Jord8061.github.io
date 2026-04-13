@@ -35,17 +35,16 @@
       "From competitive programming to LLM systems and AI security",
     links: [
       { name: "Email", url: "mailto:Jord8061@foxmail.com", icon: "email" },
+      { name: "CV", url: "./assets/CHEN_Jin_CV.pdf", icon: "cv" },
       { name: "GitHub", url: "https://github.com/Jord8061", icon: "github" },
-      { name: "CSDN", url: "https://blog.csdn.net/2201_76033853", icon: "csdn" },
-      { name: "OpenReview", url: "https://openreview.net/profile?id=%7EJin_Chen12", icon: "openreview" },
-      // { name: "ORCID", url: "https://orcid.org/0009-0009-3425-8118", icon: "orcid" }
+      { name: "Google Scholar", url: "https://scholar.google.com/citations?user=8yJ3MZEAAAAJ", icon: "scholar" }
     ]
   },
 
   about: [
     "I am an undergraduate student in Artificial Intelligence at Southwestern University of Finance and Economics (SWUFE). My research interests lie in LLM-based systems and AI systems security, especially at the intersection of reasoning, retrieval, and system reliability.",
     "My background spans competitive programming and system-oriented engineering, which shaped my interest in building research ideas into solid, reproducible systems. I am particularly drawn to problems where security, robustness, and implementation all matter.",
-    "Recently, my work has focused on security issues in LLM-based systems, especially in GraphRAG and agent memory settings. I am currently pursuing this line of research through ongoing collaboration with DEEP Lab."
+    "Recently, my work has focused on security issues in LLM-based systems, especially in GraphRAG and agent memory settings. I am currently pursuing this line of research through ongoing collaboration with X Lab."
   ],
 
   news: [

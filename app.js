@@ -117,6 +117,7 @@ function getIconSvg(iconType) {
 function inferIconType(item) {
   const source = `${item.icon || ""} ${item.name || ""} ${item.url || ""}`.toLowerCase();
   if (source.includes("mail") || source.includes("email")) return "email";
+  if (source.includes("cv") || source.includes("resume") || source.includes(".pdf")) return "cv";
   if (source.includes("github")) return "github";
   if (source.includes("scholar")) return "scholar";
   if (source.includes("openreview")) return "openreview";
@@ -168,11 +169,17 @@ function renderLinks(items) {
       const iconType = inferIconType(item);
       const safeUrl = escapeHtml(item.url);
       const safeName = escapeHtml(item.name);
-      const externalAttrs = /^https?:\/\//i.test(item.url)
+      const opensInNewTab = /^https?:\/\//i.test(item.url) || /\.pdf(?:$|[?#])/i.test(item.url);
+      const externalAttrs = opensInNewTab
         ? ` target="_blank" rel="noopener noreferrer"`
         : "";
+      const linkClass = iconType === "cv" ? "icon-link icon-link-cv" : "icon-link";
+      const iconHtml =
+        iconType === "cv"
+          ? `<span class="icon-link-label" aria-hidden="true">CV</span>`
+          : getIconSvg(iconType);
 
-      return `<a class="icon-link" href="${safeUrl}" aria-label="${safeName}" title="${safeName}"${externalAttrs}>${getIconSvg(iconType)}</a>`;
+      return `<a class="${linkClass}" href="${safeUrl}" aria-label="${safeName}" title="${safeName}"${externalAttrs}>${iconHtml}</a>`;
     })
     .join("");
 }
