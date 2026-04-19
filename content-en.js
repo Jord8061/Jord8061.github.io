@@ -112,7 +112,7 @@
       title: "Tk.cn Insurance CO.,LTD.",
       meta: "Front-end Development Intern | 2026.01 - 2026.04",
       description:
-        "I am currently a front-end development intern at Taikang Online, where my team is actively exploring AI integration. Given my background in both AI and engineering, I am interested in contributing not only to current front-end development, but also to future AI-related system building and collaboration."
+        "During my front-end internship at Taikang Online, I worked on front-end development in a team actively exploring AI integration. Leveraging my background in both AI and engineering, I contributed to front-end delivery while also participating in AI-related system building and collaboration."
     },
     {
       title: "China Center for Behavioral Economics and Finance",
